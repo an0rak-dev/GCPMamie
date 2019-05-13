@@ -1,0 +1,48 @@
+body {
+	color: #808080;
+	background-color: #fafafa;
+	font-family: 'Roboto', Arial, sans-serif;
+	font-size: 16px;
+}
+
+.front-text {
+	color: #444444;
+}
+
+.fas {
+	font-size: 20px;
+}
+
+.header {
+	text-align: center;
+	margin-left: auto;
+	margin-right: auto;
+	font-size: 14px;
+	font-style: italic;
+}
+
+.header > div {
+	float: left;
+	width: 33%;
+}
+
+.header > div:first-child {
+	text-align: left;
+}
+
+.main {
+	font-size: 24px;
+	font-weight: bold;
+	font-style: normal;
+}
+
+.header-menu {
+	width: 130px;
+	margin-left: auto;
+	margin-right: 0;
+	text-align: right;
+}
+
+.header-menu > i {
+	margin: 5px;
+}
