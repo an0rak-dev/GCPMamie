@@ -1,6 +1,7 @@
 <html>
 	<head>
 		<title>Salle sur Demande</title>
+        <meta charset="utf-8" />
 		<link rel="stylesheet" 
 			href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" 
 			integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" 
@@ -14,7 +15,7 @@
 			</div>
 			<div class="front-text">
 				<div class="main">La Salle sur Demande</div>
-				<div>Vends du rêve depuis 1999</div>
+				<div>Vendeur de rêve depuis 1999</div>
 			</div>
 			<div class="header-menu">
 				<i class="fas fa-shopping-cart front-text"></i>
@@ -22,5 +23,56 @@
 				<i class="fas fa-search front-text"></i>
 			</div>
 		</div>
+        <div id="content">
+            <form id="navbar">
+                <input type="button" value="Reset filters" />
+                <div class="navmenu">
+                    <div>Category</div>
+                    <div>
+                        <input type="checkbox" name="Games" />
+                        <label for="Games">VideoGames (5)</label>
+                    </div>
+                    <div>
+                        <input type="checkbox" name="MoviesTv" />
+                        <label for="MoviesTv">Movies &amp; TVShows (2)</label>
+                    </div>
+                    <div>
+                        <input type="checkbox" name="Tech" />
+                        <label for="Tech">Technology (4)</label>
+                    </div>
+                    <div>
+                        <input type="checkbox" name="Services" />
+                        <label for="Services">Services (6)</label>
+                    </div>
+                    <div>
+                        <input type="checkbox" name="SpecialItems" />
+                        <label for="SpecialItems">Special Items (9)</label>
+                    </div>
+                </div>
+                <div class="navmenu">
+                    <div>Status</div>
+                    <div>
+                        <input type="checkbox" name="instock" />
+                        <label for="instock">In Stock</label>
+                    </div>
+                    <div>
+                        <input type="checkbox" name="insale" />
+                        <label for="insale">In Sale</label>
+                    </div>
+                    <div>
+                        <input type="checkbox" name="outofstock" />
+                        <label for="outofstock">Out of Stock</label>
+                    </div>
+                </div>
+                <div class="navmenu">
+                    <div>Price Range</div>
+                    <div>
+                        Min : <input type="number" class="price" name="minprice" />
+                        Max : <input type="number" class="price" name="maxprice" />
+                    </div>
+                </div>
+                <input type="button" value="filter" />
+            </form>
+        </div>
 	</body>
 </html>

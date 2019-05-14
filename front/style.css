@@ -19,6 +19,8 @@ body {
 	margin-right: auto;
 	font-size: 14px;
 	font-style: italic;
+    padding-top: 10px;
+    padding-bottom: 10px;
 }
 
 .header > div {
@@ -28,6 +30,11 @@ body {
 
 .header > div:first-child {
 	text-align: left;
+    padding-left: 8px;
+}
+
+.header .fas:hover {
+    cursor: pointer;
 }
 
 .main {
@@ -45,4 +52,77 @@ body {
 
 .header-menu > i {
 	margin: 5px;
+}
+
+#content {
+    width: 70%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top:50px;
+}
+
+#navbar {
+    width : 200px;
+    margin-left: 0px;
+    margin-right: auto;
+}
+
+#navbar > input, .navmenu {
+    border: solid thin #c0c0c0;
+    border-radius: 4px;
+}
+
+#navbar > input {
+    width: 100%;
+    margin: 0;
+    background-color: #FFFFFF;
+    color: #333333;
+    font-size: 12px;
+    padding: 5px;
+    text-transform: uppercase;
+}
+
+#navbar > input:hover {
+    background-color: #e6e6e6;
+    border-color: #adadad;
+}
+
+#navbar > input:last-child {
+    background-color: #337ab7;
+    color: #ffffff;
+    border-color: #2e6da4;
+}
+
+#navbar > input:last-child:hover {
+    background-color: #287090;
+    border-color: #204d74;
+}
+
+.navmenu {
+    margin: 12px 0px;
+    font-size: 14px;
+}
+
+.navmenu > div {
+    padding: 3px 8px;
+}
+
+.navmenu > div > label {
+    font-size: 13px;
+    margin: 0px 5px;
+}
+
+.navmenu > div:first-child {
+    color: white;
+    background-color: #707070;
+    margin: 0;
+    padding: 2px;
+    font-size: 13px;
+}
+
+
+.price {
+    display: inline-block;
+    width: 50px;
+    margin: 2px 0px;
 }
