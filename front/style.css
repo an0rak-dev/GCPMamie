@@ -68,7 +68,7 @@ body {
     float:left;
 }
 
-#navbar > input, .navmenu, .product {
+#navbar > input, .navmenu {
     border: solid thin #c0c0c0;
     border-radius: 4px;
 }
@@ -134,43 +134,4 @@ body {
     float: left;
     margin-right: 0;
     margin-left: 55px;
-}
-
-.product {
-    width: 230px;
-    margin: 5px;
-    float: left;
-    padding: 5px 10px;
-    font-size: 13px;
-}
-
-.product:hover {
-    cursor: pointer;
-}
-
-.product div {
-    text-align: center;
-    width: 100%;
-    margin: 0;
-}
-
-.product img {
-    margin-left: auto;
-    margin-right: auto;
-    display: block;
-}
-.product .desc {
-    margin-left: auto;
-    margin-right: auto;
-    display:none;
-    width: 200px;
-    height: 150px;
-    font-size: 10px;
-}
-
-.product .price {
-    font-weight: bold;
-    color: black;
-    margin-top: 10px;
-    font-size: 18px;
 }
