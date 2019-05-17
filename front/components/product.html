@@ -60,7 +60,7 @@
 </template>
 
 <script>
-    var helloDoc = document.currentScript.ownerDocument;
+    var parentDoc = document.currentScript.ownerDocument;
     window.customElements.define('ssd-product', class extends HTMLElement {
         get name() {
             return this.hasAttribute('name')
@@ -88,10 +88,14 @@
         
         constructor() {
             super()
+            this.addEventListener('click', () => {
+                var code = this.getAttribute('code');
+                window.location = "/product_page.html?ref=" + code;
+            });
         }
         connectedCallback() {
                 var root = this.attachShadow({mode: 'open'});
-                var template = helloDoc.querySelector('#template'); 
+                var template = parentDoc.querySelector('#template'); 
                 var clone = document.importNode(template.content, true);
 
                 var name = this.getAttribute("name");

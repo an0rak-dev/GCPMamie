@@ -1,0 +1,81 @@
+<template id="template">
+    <link rel="stylesheet" 
+			href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" 
+			integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" 
+			crossorigin="anonymous">
+    <style>                 
+        .fas {
+            font-size: 20px;
+        }
+
+        #header {
+            text-align: center;
+            margin-left: auto;
+            margin-right: auto;
+            font-size: 14px;
+            font-style: italic;
+            padding-top: 10px;
+            padding-bottom: 10px;
+        }
+
+        #header > div {
+            float: left;
+            width: 33%;
+        }
+
+        #header > div:first-child {
+            text-align: left;
+            padding-left: 8px;
+        }
+
+        #header .fas:hover {
+            cursor: pointer;
+        }
+
+        #header-menu {
+            width: 130px;
+            margin-left: auto;
+            margin-right: 0;
+            text-align: right;
+        }
+
+        #header-menu > i {
+            margin: 5px;
+        }        
+
+        .main {
+            font-size: 24px;
+            font-weight: bold;
+            font-style: normal;
+        }
+    </style>
+    <div id="header">
+			<div>
+				<i class="fas fa-bars"></i>
+			</div>
+			<div class="front-text">
+				<div class="main">La Salle sur Demande</div>
+				<div>Vendeur de rêve depuis 1999</div>
+			</div>
+			<div id="header-menu">
+				<i class="fas fa-shopping-cart front-text"></i>
+				<i class="fas fa-user-circle front-text"></i>
+				<i class="fas fa-search front-text"></i>
+			</div>
+    </div>
+</template>
+
+<script>
+    var parentDoc = document.currentScript.ownerDocument;
+    window.customElements.define('ssd-header', class extends HTMLElement {
+        constructor() {
+            super()
+        }
+        connectedCallback() {
+                var root = this.attachShadow({mode: 'open'});
+                var template = parentDoc.querySelector('#template'); 
+                var clone = document.importNode(template.content, true);
+                root.appendChild(clone);
+        }
+    });
+</script>
