@@ -48,12 +48,21 @@
             font-weight: bold;
             font-style: normal;
         }
+
+        #front-text {
+            color: #444444;
+        }
+
+         #front-text:hover {
+            cursor:pointer;
+        }
+
     </style>
     <div id="header">
 			<div>
 				<i class="fas fa-bars"></i>
 			</div>
-			<div class="front-text">
+			<div id="front-text">
 				<div class="main">La Salle sur Demande</div>
 				<div>Vendeur de rêve depuis 1999</div>
 			</div>
@@ -75,6 +84,11 @@
                 var root = this.attachShadow({mode: 'open'});
                 var template = parentDoc.querySelector('#template'); 
                 var clone = document.importNode(template.content, true);
+                var frontText = clone.querySelector("#front-text");
+                frontText.addEventListener('click', () => {
+                    console.log("test")
+                    window.location = '/'
+                });
                 root.appendChild(clone);
         }
     });
