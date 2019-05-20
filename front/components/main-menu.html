@@ -1,0 +1,104 @@
+<template id="template">
+    <link rel="stylesheet" 
+			href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" 
+			integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" 
+			crossorigin="anonymous">
+    <style>                 
+        .fas {
+            font-size: 20px;
+        }
+
+        .fas:hover {
+            cursor: pointer;
+        }
+
+        #main-menu {
+            float: left;
+            width: 33%;
+            text-align: left;
+            padding-left: 8px;
+        }
+    
+         #overlay {
+            opacity: 0.5;
+            display: block;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: #000000;
+            position: fixed;
+            z-index: 101;
+            transition: all 0.2s ease;
+        }
+
+        #sidepanel {
+            left: 0;
+            background-color: #ffffff;
+            color: #d1d1d1;
+            height: 100%;
+            position: fixed;
+            top: 0;
+            transition: all 0.2s ease;
+            width: 260px;
+            z-index: 102;
+            position: fixed;
+        }
+
+        #sidepanel > i {
+            display: block;
+            width: 80%;
+            margin-top: 10px;
+            margin-right: 10px;
+            margin-left: auto;
+            font-size: 20px;
+            cursor: pointer;
+            text-align: right;
+        }
+
+        .off {
+            display: none !important;
+        }
+    </style>
+    <div id="main-menu">
+        <i class="fas fa-bars" style="visibility:hidden"></i>
+    </div>
+    <div id="overlay" class="off"></div>
+    <div id="sidepanel" class="off">
+        <i id="cross" class="fas fa-times"></i>
+    </div>
+</template>
+
+<script>
+    var parentDoc = document.currentScript.ownerDocument;
+
+    window.customElements.define('ssd-main-menu', class extends HTMLElement {
+        constructor() {
+            super();
+        }
+
+        connectedCallback() {
+            var root = this.attachShadow({mode: 'open'});
+            var template = parentDoc.querySelector('#template'); 
+            var clone = document.importNode(template.content, true);
+            var self = this;
+            var template = parentDoc.querySelector('#template'); 
+            
+            var burger = template.content.querySelector("#main-menu");
+            burger.addEventListener('click', () => {
+                var overlay = template.content.querySelector("#overlay");
+                var sidepanel = template.content.querySelector("#sidepanel");
+                overlay.className=""
+                sidepanel.className=""
+            });
+
+            var cross = template.content.querySelector("#cross");
+            cross.addEventListener('click', () => {
+                overlay.className="off"
+                sidepanel.className="off"
+                console.log("test")
+            });
+            root.appendChild(clone);
+        }
+    });
+</script>
