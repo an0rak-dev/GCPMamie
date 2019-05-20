@@ -3,7 +3,7 @@
 ## TodoList
 
 ### Mandatory 
-* [ ] (Front) Generate the products in javascript loop instead of hardcoded
+* [X] (Front) Generate the products in javascript loop instead of hardcoded
 * [ ] (Front) Create the Error Page
 * [ ] (Front) Create a `constants.js` file which will contains local & GCP
     url to the backend.
