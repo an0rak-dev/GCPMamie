@@ -1,4 +1,4 @@
-<template id="template">
+const templateContent = `
     <style>                
         #product {
             width: 230px;
@@ -55,12 +55,12 @@
                 eros mattis faucibus. Quisque turpis duis.
             </div>
         </div>
-    <div id="name"></div>
-    <div id="price"></div>
-</template>
+        <div id="name"></div>
+        <div id="price"></div>
+    </div>
+`;
 
-<script>
-    var parentDoc = document.currentScript.ownerDocument;
+var parentDoc = document.currentScript.ownerDocument;
     window.customElements.define('ssd-product', class extends HTMLElement {
         get name() {
             return this.hasAttribute('name')
@@ -92,12 +92,14 @@
                 var code = this.getAttribute('code');
                 window.location = "/product_page.html?ref=" + code;
             });
+            this.attachShadow({mode: 'open'});
+            this.template = document.createElement('template');
+            this.template.innerHTML = templateContent;
         }
-        connectedCallback() {
-                var root = this.attachShadow({mode: 'open'});
-                var template = parentDoc.querySelector('#template'); 
-                var clone = document.importNode(template.content, true);
-
+        connectedCallback() { 
+                var clone = document.importNode(this.template.content, true);
+                console.log(clone);
+                
                 var name = this.getAttribute("name");
                 var imgLink = this.getAttribute("imgLink");
                 if (imgLink === undefined || imgLink == null) {
@@ -109,7 +111,6 @@
                 clone.querySelector("#img").src = imgLink;
                 clone.querySelector("#price").innerHTML = price;
 
-                root.appendChild(clone);
+                this.shadowRoot.appendChild(clone);
         }
     });
-</script>

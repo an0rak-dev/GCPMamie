@@ -7,10 +7,10 @@
 			integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" 
 			crossorigin="anonymous">
         <link rel="import" href="components/header.html">
-        <link rel="import" href="components/product.html">
 		<link rel="stylesheet" href="style.css">
 	</head>
 	<body>
+        <script src="components/product.js"></script>
 		<ssd-header></ssd-header>
         <div id="content">
             <form id="navbar">
@@ -64,14 +64,16 @@
             </form>
 
             <div id="products">
-                <ssd-product code="p01" name="Product 1" price="0,00 €" ></ssd-product>
-                <ssd-product code="p02" name="Product 2" price="0,00 €" ></ssd-product>
-                <ssd-product code="p03" name="Product 3" price="0,00 €" ></ssd-product>
-                <ssd-product code="p04" name="Product 4" price="0,00 €" ></ssd-product>
-                <ssd-product code="p05" name="Product 5" price="0,00 €" ></ssd-product>
-                <ssd-product code="p06" name="Product 6" price="0,00 €" ></ssd-product>
-                <ssd-product code="p07" name="Product 7" price="0,00 €" ></ssd-product>
-                <ssd-product code="p08" name="Product 8" price="0,00 €" ></ssd-product>
+                <script>
+                    var parent = document.querySelector('#products');
+                    for (i=0; i < 9; i++) {     
+                        var p = document.createElement('ssd-product');
+                        p.setAttribute('code', 'p' + i);
+                        p.setAttribute('name', 'Product ' + i);
+                        p.setAttribute('price', '0.00 €');
+                        parent.appendChild(p);
+                    }
+                </script>
             </div>
         </div>
 	</body>
