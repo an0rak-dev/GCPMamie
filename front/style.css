@@ -1,8 +1,8 @@
 body {
-	color: #808080;
-	background-color: #fafafa;
-	font-family: 'Roboto', Arial, sans-serif;
-	font-size: 16px;
+    color: #808080;
+    background-color: #fafafa;
+    font-family: 'Roboto', Arial, sans-serif;
+    font-size: 16px;
 }
 
 #content, #product-content {
@@ -161,20 +161,58 @@ body {
     font-size: 16px;
 }
 
- #product-content .button {
-     background-color: #448aff;
-     color: #ffffff;
-     cursor: pointer;
-     text-decoration: none;
-     display: block;
-     width: 100px;
-     margin-right: 0;
-     margin-left: auto;
-     padding: 6px 12px;
-     border-radius: 4px;
-     text-align: center;
- }
+#product-content .button {
+    background-color: #448aff;
+    color: #ffffff;
+    cursor: pointer;
+    text-decoration: none;
+    display: block;
+    width: 100px;
+    margin-right: 0;
+    margin-left: auto;
+    padding: 6px 12px;
+    border-radius: 4px;
+    text-align: center;
+}
 
-  #product-content .button:hover {
-      background-color: #2979ff;
-  }
+#product-content .button:hover {
+    background-color: #2979ff;
+}
+
+#error > h1 {
+    font-size: 48px;
+    font-style: italic;
+    display:block;
+    margin-top: 150px;
+}
+
+#error > div:nth-child(2) {
+    font-size: 12px;
+    font-style: italic;
+}
+#error > div:nth-child(3) {
+    font-size: 30px;
+    margin-top: 60px;
+}
+
+#error span {
+    font-family: monospace;
+    border: solid thin #adadad;
+    border-radius: 4px;
+    padding: 5px;
+    background-color: #e9e9e9;
+    color: #848484;
+}
+
+#error a {
+    text-decoration: none;
+    font-style: italic;
+    font-size: 16px;
+    color: #848484;
+    display: block;
+    margin-top: 30px;
+}
+
+#error a:before {
+    content: "← "
+}
