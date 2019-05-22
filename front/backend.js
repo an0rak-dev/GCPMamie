@@ -1,6 +1,6 @@
 const PROD=false;
 
-const BACK = (PROD) ? "TODO" : "http://localhost:8081/api/v1";
+const BACK = (PROD) ? "TODO" : "http://lvh.me:8081/api/v1";
 
 function doGet(url) {
     var xmlHttp = new XMLHttpRequest();
@@ -17,7 +17,7 @@ function doPost(url, body) {
 }
 
 function getProducts() {
-    return doGet(BACK + "/product");
+    return JSON.parse(doGet(BACK + "/product"));
 }
 
 function getOneProduct(id) {

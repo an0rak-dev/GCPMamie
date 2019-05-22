@@ -70,9 +70,9 @@
                     var allProducts = getProducts();
                     for (var product of allProducts) {     
                         var p = document.createElement('ssd-product');
-                        p.setAttribute('code', p.code);
-                        p.setAttribute('name', p.name);
-                        p.setAttribute('price', p.price);
+                        p.setAttribute('code', product.code);
+                        p.setAttribute('name', product.name);
+                        p.setAttribute('price', product.price);
                         parent.appendChild(p);
                     }
                 </script>
