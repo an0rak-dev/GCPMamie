@@ -9,24 +9,27 @@
     url to the backend.
 * [X] (Front) Call the backend API to get all the products
 * [X] (Front) Call the backend API to add a product to cart
-* [ ] (Front) Deploy on GCS
-* [ ] (Back) Create the Springboot backend Docker image
+* [X] (Back) Create the Springboot backend Docker image
 * [ ] (Back) Add an endpoint to return the list of all the products' summaries
 * [ ] (Back) Add an endpoint to return the json description of a specific
     product
 * [ ] (Back) Add an endpoint to add a product in the cart (use dummy user 
     with a singleton)
 * [ ] (Back) Add an endpoint to get the cart count
-* [ ] Makefile to organize the deployment/start _AND_ the shutdown/teardown.
-* [ ] (Back) Deploy on GKE
-* [ ] (Back) Add the GCP Endpoints
 * [ ] (Data) Create the Database structure in a PostgreSQL instance
 * [ ] (Data) Fill the database with dummy products
-* [ ] (Back) Store the image in GCP CDN
-* [ ] (Data) Apply the database structure & init to a GCP CloudSQL
-* [ ] (Batch) Create the Pub/Sub topic
 * [ ] (Batch) Create a simple dummy/mock batch application which will display
     random orders informations at each Pub/Sub message
+* [ ] Create a DM script to organize the setup and teardown of the platform
+* [ ] Create a makefile to easily setup/teardown and startup/shutdown the resources
+* [ ] (Front) Deploy on GCS
+* [ ] (Front) Store the images in GCP CDN
+* [ ] (Back) Add a cloud build task to build the backend image and push it on 
+    GCR
+* [ ] (Back) Deploy on GKE
+* [ ] (Back) Add the GCP Endpoints
+* [ ] (Data) Apply the database structure & init to a GCP CloudSQL
+* [ ] (Batch) Create the Pub/Sub topic
 * [ ] (Batch) Prepare the scalable infrastructure as a DM script on 
     PrivateCatalog
 
