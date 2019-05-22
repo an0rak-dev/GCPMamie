@@ -1,6 +1,6 @@
 const PROD=false;
 
-const BACK = (PROD) ? "TODO" : "http://lvh.me:8081/api/v1";
+const BACK = (PROD) ? "TODO" : "http://localhost:8081/api/v1";
 
 function doGet(url) {
     var xmlHttp = new XMLHttpRequest();
@@ -13,15 +13,15 @@ function doPost(url, body) {
     var xmlHttp = new XMLHttpRequest();
     xmlHttp.open("POST", url, false);
     xmlHttp.send(body);
-    return req.status;
+    return xmlHttp.status;
 }
 
 function getProducts() {
     return JSON.parse(doGet(BACK + "/product"));
 }
 
-function getOneProduct(id) {
-    return doGet(BACK + "/product/" + id);
+function getOneProduct(id) {    
+    return JSON.parse(doGet(BACK + "/product/" + id));
 }
 
 function addToCart(code, qty) {

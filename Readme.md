@@ -10,8 +10,8 @@
 * [X] (Front) Call the backend API to get all the products
 * [X] (Front) Call the backend API to add a product to cart
 * [X] (Back) Create the Springboot backend Docker image
-* [ ] (Back) Add an endpoint to return the list of all the products' summaries
-* [ ] (Back) Add an endpoint to return the json description of a specific
+* [X] (Back) Add an endpoint to return the list of all the products' summaries
+* [X] (Back) Add an endpoint to return the json description of a specific
     product
 * [ ] (Back) Add an endpoint to add a product in the cart (use dummy user 
     with a singleton)

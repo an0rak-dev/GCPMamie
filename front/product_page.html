@@ -12,19 +12,6 @@
         <script src="components/header.js"></script>
         <script src="backend.js"></script>
 		<ssd-header></ssd-header>
-        <script>
-            var url = new URL(window.location.href);
-            var product = getOneProduct(url.searchParams.get("ref"));
-            document.getElementById("title").innerHTML = product.name;
-            document.getElementById("code").innerHTML = product.code;
-            document.getElementById("description").innerHTML = product.description.replace('\n','<br/>');
-
-            document.getElementById("addCart").addEventListener('click', () => {
-                var code = document.getElementById("code").innerHTML;
-                var qty = document.getElementById("qtyValue").innerHTML;
-                addToCart(code, qty);
-            });
-        </script>
         <div id="product-content">
             <div>
                 <h1 id="title"></h1>
@@ -47,6 +34,22 @@
                     <a href="#" id="addCart" class="button">Add to cart</a>
                 </div>
             </div>
+
+            <script>
+                var url = new URL(window.location.href);
+                var product = getOneProduct(url.searchParams.get("ref"));
+                console.log(product);
+                document.getElementById("title").innerHTML = product.name;
+                document.getElementById("code").innerHTML = product.code;
+                document.getElementById("description").innerHTML = product.description.replace('\n','<br/>');
+
+                document.getElementById("addCart").addEventListener('click', 
+                    () => {
+                        var code = document.getElementById("code").innerHTML;
+                        var qty = document.getElementById("qtyValue").innerHTML;
+                        addToCart(code, qty);
+                    });
+            </script>
         </div>
     </body>
 </html>
