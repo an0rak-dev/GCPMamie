@@ -1,4 +1,4 @@
-const PROD=true;
+const PROD=false;
 
 const BACK = (PROD) ? "TODO" : "http://localhost:8081/api/v1";
 
