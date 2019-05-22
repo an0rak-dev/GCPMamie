@@ -10,39 +10,41 @@
 	</head>
 	<body>
         <script src="components/header.js"></script>
+        <script src="backend.js"></script>
 		<ssd-header></ssd-header>
+        <script>
+            var url = new URL(window.location.href);
+            var product = getOneProduct(url.searchParams.get("ref"));
+            document.getElementById("title").innerHTML = product.name;
+            document.getElementById("code").innerHTML = product.code;
+            document.getElementById("description").innerHTML = product.description.replace('\n','<br/>');
+
+            document.getElementById("addCart").addEventListener('click', () => {
+                var code = document.getElementById("code").innerHTML;
+                var qty = document.getElementById("qtyValue").innerHTML;
+                addToCart(code, qty);
+            });
+        </script>
         <div id="product-content">
             <div>
-                <h1>Product 1</h1>
+                <h1 id="title"></h1>
                 <img id="img"
                     src="https://www.novovelo.com/wp-content/themes/claue/assets/images/placeholder.png" />
             </div>
             <div>
-                <h2>Ref : ProductCode</h2>
-                <div>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus purus ex, suscipit non mattis 
-                    at, consequat quis velit. Aliquam luctus bibendum turpis, vel fringilla nulla laoreet vehicula. 
-                    <br />
-                    <br />
-                    Donec sit amet pharetra nulla. Fusce suscipit vitae leo quis pulvinar. Aliquam elit nunc, 
-                    consectetur elementum dignissim quis, suscipit eu ex. Etiam non blandit nibh. Vestibulum dictum 
-                    pharetra mi id pellentesque. Donec nunc erat, viverra eget viverra in, tempus id libero. Nam fermentum 
-                    dictum dapibus. Nulla suscipit pellentesque velit, quis ullamcorper tortor rhoncus et. 
-                    <br />
-                    <br />
-                    Aenean quis felis eu nisi dapibus sollicitudin. Sed ullamcorper, tortor venenatis venenatis rhoncus, 
-                    nisl felis convallis neque, a euismod.
+                <h2 id="code"></h2>
+                <div id="description">
                 </div>
                 <div>
                     Quantity : 
                     <div class="qty">
                         <a href="#">-</a>
-                        <input type="number" />
+                        <input id="qtyValue" type="number" />
                         <a href="#">+</a>
                         <span>In Stock</span>
                     </div>
                     
-                    <a href="/error.html" class="button">Add to cart</a>
+                    <a href="#" id="addCart" class="button">Add to cart</a>
                 </div>
             </div>
         </div>

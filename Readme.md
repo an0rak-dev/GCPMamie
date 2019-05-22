@@ -4,11 +4,11 @@
 
 ### Mandatory 
 * [X] (Front) Generate the products in javascript loop instead of hardcoded
-* [ ] (Front) Create the Error Page
-* [ ] (Front) Create a `constants.js` file which will contains local & GCP
+* [X] (Front) Create the Error Page
+* [X] (Front) Create a `constants.js` file which will contains local & GCP
     url to the backend.
-* [ ] (Front) Call the backend API to get all the products
-* [ ] (Front) Call the backend API to add a product to cart
+* [X] (Front) Call the backend API to get all the products
+* [X] (Front) Call the backend API to add a product to cart
 * [ ] (Front) Deploy on GCS
 * [ ] (Back) Create the Springboot backend Docker image
 * [ ] (Back) Add an endpoint to return the list of all the products' summaries

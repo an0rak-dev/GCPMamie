@@ -11,6 +11,7 @@
 	<body>
         <script src="components/product.js"></script>
         <script src="components/header.js"></script>
+        <script src="backend.js"></script>
 		<ssd-header></ssd-header>
         <div id="content">
             <form id="navbar">
@@ -66,11 +67,12 @@
             <div id="products">
                 <script>
                     var parent = document.querySelector('#products');
-                    for (i=0; i < 9; i++) {     
+                    var allProducts = getProducts();
+                    for (var product of allProducts) {     
                         var p = document.createElement('ssd-product');
-                        p.setAttribute('code', 'p' + i);
-                        p.setAttribute('name', 'Product ' + i);
-                        p.setAttribute('price', '0.00 €');
+                        p.setAttribute('code', p.code);
+                        p.setAttribute('name', p.name);
+                        p.setAttribute('price', p.price);
                         parent.appendChild(p);
                     }
                 </script>

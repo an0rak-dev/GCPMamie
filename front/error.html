@@ -10,14 +10,26 @@
 	</head>
 	<body>
         <script src="components/header.js"></script>
+        <script>
+            var url = new URL(window.location.href);
+            var code = url.searchParams.get("code");
+            var cause = "(" + code + ") - ";
+            if (code == 500) {
+                cause += "Server Error"
+            } else if (code == 404) {
+                cause += "Not Found";
+            } else {
+                cause += "Technical Error"
+            }
+            cause += ".";
+            document.getElementById("cause").innerHTML = cause;
+        </script>
 		<ssd-header></ssd-header>
         <div id="error">
             <h1>
                 Oooopps. That was a mistake.
             </h1>
-            <div>
-                (500) - Server Error. 
-            </div>
+            <div id="cause"></div>
             <div>
                 You can reach the support at <span>contact@salle-sur-demande.com</span> with this code : <span>090909234512949</span> 
             </div>
