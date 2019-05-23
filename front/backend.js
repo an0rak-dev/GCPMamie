@@ -12,6 +12,7 @@ function doGet(url) {
 function doPost(url, body) {
     var xmlHttp = new XMLHttpRequest();
     xmlHttp.open("POST", url, false);
+    xmlHttp.setRequestHeader("Content-Type", "application/json");
     xmlHttp.send(body);
     return xmlHttp.status;
 }
@@ -26,11 +27,9 @@ function getOneProduct(id) {
 
 function addToCart(code, qty) {
     var body = {};
-    var product = {};
-    product.code = code;
-    product.qty = qty;
-    body.product = product;
-    var status = doPost(BACK + "/cart", body);
+    body.code = code;
+    body.qty = qty;
+    var status = doPost(BACK + "/cart", JSON.stringify(body));
     if (status != 200) {
         window.location = '/error.html?code=' + status;
     }
