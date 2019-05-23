@@ -5,4 +5,6 @@
 
 FROM postgres:11
 
-COPY init.sql /docker-entrypoint-initdb.d/init.sql
+COPY 01_init.sql /docker-entrypoint-initdb.d/01_init.sql
+COPY 02_load-products.sql /docker-entrypoint-initdb.d/02_load-products.sql
+COPY 03_load-stocks.sql /docker-entrypoint-initdb.d/03_load-stocks.sql
