@@ -15,7 +15,7 @@
     product
 * [X] (Back) Add an endpoint to add a product in the cart
 * [X] (Back) Add an endpoint to get the cart count
-* [ ] (Data) Create the Database structure in a PostgreSQL instance
+* [X] (Data) Create the Database structure in a PostgreSQL instance
 * [ ] (Data) Fill the database with dummy products
 * [ ] (Batch) Create a simple dummy/mock batch application which will display
     random orders informations at each Pub/Sub message
