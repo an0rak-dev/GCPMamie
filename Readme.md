@@ -13,9 +13,8 @@
 * [X] (Back) Add an endpoint to return the list of all the products' summaries
 * [X] (Back) Add an endpoint to return the json description of a specific
     product
-* [ ] (Back) Add an endpoint to add a product in the cart (use dummy user 
-    with a singleton)
-* [ ] (Back) Add an endpoint to get the cart count
+* [X] (Back) Add an endpoint to add a product in the cart
+* [X] (Back) Add an endpoint to get the cart count
 * [ ] (Data) Create the Database structure in a PostgreSQL instance
 * [ ] (Data) Fill the database with dummy products
 * [ ] (Batch) Create a simple dummy/mock batch application which will display

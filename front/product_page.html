@@ -11,7 +11,7 @@
 	<body>
         <script src="components/header.js"></script>
         <script src="backend.js"></script>
-		<ssd-header></ssd-header>
+		<ssd-header id="header"></ssd-header>
         <div id="product-content">
             <div>
                 <h1 id="title"></h1>
@@ -47,6 +47,7 @@
                         var code = document.getElementById("code").innerHTML;
                         var qty = document.getElementById("qtyValue").value;
                         addToCart(code, qty);
+                        document.getElementById("header").refresh();
                     });
                 document.getElementById("minus").addEventListener('click',
                     () => {

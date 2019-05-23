@@ -62,6 +62,7 @@ const headerTemplateContent = `
         </div>
         <div id="header-menu">
             <i class="fas fa-shopping-cart front-text"></i>
+            <span id="cartCount"></span>
             <i class="fas fa-user-circle front-text" style="visibility: hidden"></i>
             <i class="fas fa-search front-text" style="visibility:hidden"></i>
         </div>
@@ -75,14 +76,20 @@ window.customElements.define('ssd-header', class extends HTMLElement {
         this.attachShadow({mode: 'open'});
         this.template = document.createElement('template');
         this.template.innerHTML = headerTemplateContent;
+        this.refresh = function() { 
+            var spanCounter = this.shadowRoot.querySelector("#cartCount");
+            spanCounter.innerHTML = getCartCount();    
+        }
     }
     connectedCallback() {
         var clone = document.importNode(this.template.content, true);
         var frontText = clone.querySelector("#front-text");
+        var spanCounter = clone.querySelector("#cartCount");
+        spanCounter.innerHTML = getCartCount();
         frontText.addEventListener('click', () => {
-            console.log("test")
             window.location = '/'
         });
+        //this.shadowRoot.test = function() { console.log('test'); }  
         this.shadowRoot.appendChild(clone);
     }
 });

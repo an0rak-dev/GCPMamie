@@ -23,6 +23,10 @@ public class CartService {
 		this.moveProductFromStockToCart(code, quantity);
 	}	
 
+	public int getNbOfProducts() {
+		return cartRepository.countAll();
+	}
+
 	private void moveProductFromStockToCart(String code, int quantity) {
 		if (stockService.checkStock(code, quantity)) {
 			int initialQuantity = cartRepository.findQuantityOf(code);

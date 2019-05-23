@@ -25,6 +25,10 @@ function getOneProduct(id) {
     return JSON.parse(doGet(BACK + "/product/" + id));
 }
 
+function getCartCount() {
+    return doGet(BACK + "/cart/count");
+}
+
 function addToCart(code, qty) {
     var body = {};
     body.code = code;
