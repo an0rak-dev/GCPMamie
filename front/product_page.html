@@ -25,9 +25,9 @@
                 <div>
                     Quantity : 
                     <div class="qty">
-                        <a href="#">-</a>
+                        <a href="#" id="minus">-</a>
                         <input id="qtyValue" type="number" />
-                        <a href="#">+</a>
+                        <a href="#" id="plus">+</a>
                         <span>In Stock</span>
                     </div>
                     
@@ -47,6 +47,26 @@
                         var code = document.getElementById("code").innerHTML;
                         var qty = document.getElementById("qtyValue").value;
                         addToCart(code, qty);
+                    });
+                document.getElementById("minus").addEventListener('click',
+                    () => {
+                        var qty = document.getElementById("qtyValue").value;
+                        if (undefined === qty || qty === "") {
+                            qty = 0;
+                        }
+                        if (qty > 0) {
+                            document.getElementById("qtyValue").value = 
+                                parseInt(qty) - 1;
+                        }
+                    });
+                document.getElementById("plus").addEventListener('click',
+                    () => {
+                        var qty = document.getElementById("qtyValue").value;
+                        if (undefined === qty || qty === "") {
+                            qty = 0;
+                        }
+                        document.getElementById("qtyValue").value = 
+                            parseInt(qty) + 1;
                     });
             </script>
         </div>
