@@ -1,0 +1,18 @@
+version: '3'
+
+services:
+  db:
+    image: gcpmamie-db:latest
+    ports:
+      - 5432:5432
+    expose:
+      - 5432
+  server:
+    image: gcpmamie-server:latest
+    ports:
+      - 8081:8080
+    expose:
+      - 8081
+    depends_on: 
+      - db
+    command: "--spring.datasource.url=jdbc:postgresql://host.docker.internal:5432/postgres"

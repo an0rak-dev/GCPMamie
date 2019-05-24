@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 import com.github.an0rakdev.talkgcpmamie.datas.ProductRepository;
-import com.github.an0rakdev.talkgcpmamie.pojos.DetailledProduct;
 import com.github.an0rakdev.talkgcpmamie.pojos.Product;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -18,8 +17,8 @@ public class ProductService {
 		return this.productRepository.list();	
 	}
 
-	public Optional<DetailledProduct> getDetailOf(String code) {
-		DetailledProduct product = productRepository.find(code);
+	public Optional<Product> getDetailOf(String code) {
+		Product product = productRepository.find(code);
 		return (null == product) ? Optional.empty() : Optional.of(product);
 	}
 }

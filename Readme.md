@@ -1,5 +1,47 @@
 # Talk "Comment la GCP m'a permis de sauver ma Prod chez Mamie"
 
+## How to run it Locally
+
+Here's a few steps to build this app and make it run locally. You'll need a 
+running Docker instance and either NodeJS or Python3.
+
+All the following commands are supposed to be run from this directory.
+
+### Step 1 : Build the Database and the server image
+
+_Note : Note that the datas will not persisted since it only expected to be run_
+_locally for dev or tests purpose._
+
+```
+$ cd datas
+$ docker build -t gcpmamie-db .
+$ cd ../back
+$ docker build -t gcpmamie-server .
+```
+
+### Step 2 : Run the backend and the database
+
+```
+$ docker-compose up
+```
+
+The backend will listen on `localhost:8081ù 
+
+### Step 3 : Run the client 
+
+If you have NodeJS, you can use thoses commands
+```
+$ cd front/
+$ npm install http-server
+$ http-server -p 8080 
+```
+
+If you have Python3, you can use thoses commands
+```
+$ cd front/
+$ python3 -m http.server 8080
+```
+
 ## TodoList
 
 ### Mandatory 
@@ -16,7 +58,7 @@
 * [X] (Back) Add an endpoint to add a product in the cart
 * [X] (Back) Add an endpoint to get the cart count
 * [X] (Data) Create the Database structure in a PostgreSQL instance
-* [ ] (Data) Fill the database with dummy products
+* [X] (Data) Fill the database with dummy products
 * [ ] (Batch) Create a simple dummy/mock batch application which will display
     random orders informations at each Pub/Sub message
 * [ ] Create a DM script to organize the setup and teardown of the platform

@@ -3,7 +3,6 @@ package com.github.an0rakdev.talkgcpmamie.controllers;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
-import com.github.an0rakdev.talkgcpmamie.pojos.DetailledProduct;
 import com.github.an0rakdev.talkgcpmamie.pojos.Product;
 import com.github.an0rakdev.talkgcpmamie.services.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,9 +26,9 @@ public class ProductController {
 	}
 
 	@GetMapping("/{productId}")
-	public ResponseEntity<DetailledProduct> getProduct(
+	public ResponseEntity<Product> getProduct(
 			@PathVariable String productId) {
-		Optional<DetailledProduct> prdt = productService.getDetailOf(productId);
+		Optional<Product> prdt = productService.getDetailOf(productId);
 		if (prdt.isPresent()) {
 			return ResponseEntity.ok().body(prdt.get());
 		}
