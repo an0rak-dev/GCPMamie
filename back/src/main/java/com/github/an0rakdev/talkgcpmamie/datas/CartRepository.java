@@ -16,7 +16,6 @@ public class CartRepository {
 	@PersistenceContext
 	private EntityManager em;
 
-	//@Query("SELECT quantity FROM Cart WHERE code = ?1 ")
 	public Integer findQuantityOf(String code) {
 		Query q = em.createQuery("SELECT quantity FROM Cart WHERE code = :c");
 		q.setParameter("c", code);
@@ -31,10 +30,10 @@ public class CartRepository {
 		}
 	}
 
-	//@Query("UPDATE Cart SET quantity = ?2 WHERE code = ?1")
+	@Transactional
 	public void updateQuantity(String code, int newQuantity) {
 		Query q = em.createQuery("UPDATE Cart SET quantity = :q WHERE code = :c");
-		q.setParameter("q", newQuantity);
+		q.setParameter("q", (double) newQuantity);
 		q.setParameter("c", code);
 		q.executeUpdate();
 	}
@@ -44,7 +43,6 @@ public class CartRepository {
 		this.em.persist(new Cart(code, quantity));
 	}
 
-	//@Query("SELECT COALESCE(SUM(quantity), 0) FROM Cart")
 	public int countAll() {
 		Query q = em.createQuery("SELECT COALESCE(SUM(quantity), 0) FROM Cart");
 		Double result =  (Double) q.getSingleResult();
