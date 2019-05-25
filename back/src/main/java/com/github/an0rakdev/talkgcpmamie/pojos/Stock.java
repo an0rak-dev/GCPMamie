@@ -6,28 +6,28 @@ import javax.persistence.Entity;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="cart")
-public class Cart {
-	
+@Table(name="stock")
+public class Stock {
+
 	private String code;
 	private Double quantity;
 
-	public Cart() {
+	public Stock() {
 		this("", 0.0);
 	}
 
-	public Cart(String code, double qty) {
+	public Stock(String code, double qty) {
 		this.code = code;
 		this.quantity = qty;
 	}
 
 	@Id
-	@Column(name = "c_code")
+	@Column(name = "s_code")
 	public String getCode() {
 		return this.code;
 	}
 
-	@Column(name = "c_quantity")
+	@Column(name = "s_quantity")
 	public Double getQuantity() {
 		return this.quantity;
 	}

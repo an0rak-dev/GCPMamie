@@ -2,7 +2,6 @@ package com.github.an0rakdev.talkgcpmamie.controllers;
 
 import java.util.ArrayList;
 import java.util.List;
-import com.github.an0rakdev.talkgcpmamie.pojos.Cart;
 import com.github.an0rakdev.talkgcpmamie.services.CartService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;

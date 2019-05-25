@@ -2,32 +2,21 @@ package com.github.an0rakdev.talkgcpmamie.datas;
 
 import java.util.Map;
 import java.util.HashMap;
-import org.springframework.stereotype.Component;
+import com.github.an0rakdev.talkgcpmamie.pojos.Stock;
+import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.jpa.repository.Modifying;
+import org.springframework.transaction.annotation.Transactional;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
 
-@Component
-public class StockRepository {
-	private Map<String, Integer> mockDatas;
+@Repository
+public interface StockRepository extends JpaRepository<Stock, String> {
+	
+	@Query(value="SELECT s FROM Stock s WHERE s.code = ?1")
+	public Stock find(String code);
 
-	public StockRepository() {
-		this.mockDatas = new HashMap<>();
-		this.mockDatas.put("p01", 99);
-		this.mockDatas.put("p02", 99);
-		this.mockDatas.put("p03", 99);
-		this.mockDatas.put("p04", 99);
-		this.mockDatas.put("p05", 99);
-		this.mockDatas.put("p06", 99);
-		this.mockDatas.put("p07", 99);
-		this.mockDatas.put("p08", 99);
-		this.mockDatas.put("p09", 99);
-		this.mockDatas.put("p10", 99);
-	}
-
-	public int findQuantityOf(String code) {
-		Integer value = this.mockDatas.get(code);
-		return (value == null) ? 0 : value;
-	}
-
-	public void updateQuantity(String code, int newQuantity) {
-		mockDatas.put(code, newQuantity);
-	}
+	@Transactional
+	@Modifying
+	@Query(value="UPDATE Stock SET quantity = ?2 WHERE code = ?1")
+	public void updateQuantity(String code, double newQuantity);
 }

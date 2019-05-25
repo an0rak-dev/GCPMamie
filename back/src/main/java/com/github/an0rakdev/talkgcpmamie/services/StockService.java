@@ -11,11 +11,11 @@ public class StockService {
 	private StockRepository stockRepository;
 
 	public boolean checkStock(String code, int quantity) {
-		return quantity <= stockRepository.findQuantityOf(code);	
+		return quantity <= stockRepository.find(code).getQuantity();	
 	}
 
 	public void use(String code, int quantity) {
-		int initialQuantity = stockRepository.findQuantityOf(code);
+		double initialQuantity = stockRepository.find(code).getQuantity();
 		stockRepository.updateQuantity(code, initialQuantity - quantity);
 	}
 }

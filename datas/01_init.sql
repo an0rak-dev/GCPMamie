@@ -14,7 +14,7 @@ ALTER TABLE ssd_prod.product OWNER TO ssd_pg;
 
 CREATE TABLE IF NOT EXISTS ssd_prod.stock (
 	s_code VARCHAR(10) NOT NULL,
-	s_price DECIMAL NOT NULL,
+	s_quantity DECIMAL NOT NULL,
 	CONSTRAINT "pk_stock" PRIMARY KEY (s_code),
 	CONSTRAINT "fk_stock_product" FOREIGN KEY (s_code) REFERENCES ssd_prod.product(p_code)
 );
@@ -23,7 +23,7 @@ ALTER TABLE ssd_prod.stock OWNER TO ssd_pg;
 
 CREATE TABLE IF NOT EXISTS ssd_prod.cart (
 	c_code VARCHAR(10) NOT NULL,
-	d_quantity DECIMAL NOT NULL,
+	c_quantity DECIMAL NOT NULL,
 	CONSTRAINT "pk_cart" PRIMARY KEY (c_code),
 	CONSTRAINT "fk_stock_cart" FOREIGN KEY (c_code) REFERENCES ssd_prod.product(p_code)
 );
