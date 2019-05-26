@@ -10,13 +10,14 @@
 
 class Socket {
 	public:
-		Socket(std::string addr, unsigned int port);
+		Socket(std::string addr, unsigned int port, unsigned int msgMaxSize);
 		virtual ~Socket();
 		void attach(Thread* thread);
 		void start();
 
 	private:
 		struct sockaddr_in socketAddress;
+		unsigned int msgMaxSize;
 };
 
 #endif

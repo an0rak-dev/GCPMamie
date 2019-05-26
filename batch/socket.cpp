@@ -1,10 +1,11 @@
 #include "socket.hpp"
 
 #include <unistd.h>
-
+#include <stdlib.h>
 #include <iostream>
 
-Socket::Socket(std::string addr, unsigned int port) {
+Socket::Socket(std::string addr, unsigned int port, unsigned int maxSize) 
+		: msgMaxSize(maxSize) {
 	in_addr_t ip = inet_addr(addr.c_str());
 	this->socketAddress.sin_family = AF_INET;
 	this->socketAddress.sin_addr.s_addr = ip;
@@ -36,14 +37,18 @@ void Socket::start() {
 		std::cerr << "Unable to listen the socket." << std::endl;
 		return;
 	}
-	int hAccept = accept(hsocket, NULL, NULL);
-
-	char buffer[1000];
-	int cb = recv(hAccept, buffer, sizeof(buffer), 0);
-	if (cb <= 0) {
-		std::cerr << "Unable to read the connected socket." << std::endl;
-		return;
+	while (true) { // TODO Use a proper way to break the loop.
+		int hAccept = accept(hsocket, NULL, NULL);
+		char* buffer = (char*) malloc(sizeof(char) * this->msgMaxSize + 1);
+		for (int i=0; i < this->msgMaxSize +1; i++) { buffer[i] = '\0'; }
+		int cb = recv(hAccept, buffer, sizeof(buffer), 0);
+		if (cb <= 0) {
+			std::cerr << "Unable to read the connected socket." << std::endl;
+			return;
+		}
+		std::cout << "Msg ! " << std::endl << std::string(buffer) << std::endl;
+		free(buffer);
+		close(hAccept);
 	}
-	close(hAccept);
-	close(hsocket);
+	close(hsocket); // Never Reached.
 }
