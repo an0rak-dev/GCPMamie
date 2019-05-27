@@ -59,7 +59,7 @@ $ python3 -m http.server 8080
 * [X] (Back) Add an endpoint to get the cart count
 * [X] (Data) Create the Database structure in a PostgreSQL instance
 * [X] (Data) Fill the database with dummy products
-* [ ] (Batch) Create a simple dummy/mock batch application which will display
+* [X] (Batch) Create a simple dummy/mock batch application which will display
     random orders informations at each Pub/Sub message
 * [ ] Create a DM script to organize the setup and teardown of the platform
 * [ ] Create a makefile to easily setup/teardown and startup/shutdown the resources
@@ -71,8 +71,9 @@ $ python3 -m http.server 8080
 * [ ] (Back) Add the GCP Endpoints
 * [ ] (Data) Apply the database structure & init to a GCP CloudSQL
 * [ ] (Batch) Create the Pub/Sub topic
-* [ ] (Batch) Prepare the scalable infrastructure as a DM script on 
-    PrivateCatalog
+* [ ] (Batch) Deploy 2 instances of the VM batch using an instance group of 2.
+* [ ] (Batch) Prepare the script which will overflow the pubsub topic and the way 
+    to easily upgrade the instance group temporarly.
 
 ### If there is more time
 * [ ] (Front) Add the GCP LB in front of the GCS
