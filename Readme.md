@@ -9,7 +9,7 @@ All the following commands are supposed to be run from this directory.
 
 ### Step 1 : Build the Database and the server image
 
-_Note : Note that the datas will not persisted since it only expected to be run_
+_Note : Note that the datas will not persisted since its only expected to be run_
 _locally for dev or tests purpose._
 
 ```
@@ -71,9 +71,11 @@ $ python3 -m http.server 8080
 * [ ] (Back) Add the GCP Endpoints
 * [ ] (Data) Apply the database structure & init to a GCP CloudSQL
 * [ ] (Batch) Create the Pub/Sub topic
-* [ ] (Batch) Deploy 2 instances of the VM batch using an instance group of 2.
-* [ ] (Batch) Prepare the script which will overflow the pubsub topic and the way 
-    to easily upgrade the instance group temporarly.
+* [ ] (Batch) Deploy 2 instances of the VM batch using an instance template.
+* [ ] (Batch) Prepare the way to easily replace the 2 hard provisioned VMs to an instance 
+    group of 10 VMs
+(* [ ] (Batch) Prepare the script which will overflow the pubsub topic and the way 
+    to easily upgrade the instance group temporarly if previous step failed.)
 
 ### If there is more time
 * [ ] (Front) Add the GCP LB in front of the GCS

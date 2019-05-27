@@ -4,8 +4,8 @@
 from random import randint
 import socket
 
-TCP_IP='127.0.0.1'
-TCP_PORT=10022
+TCP_IP = '127.0.0.1'
+TCP_PORT = 10022
 
 streets = [
     'Privet Drive',
@@ -44,10 +44,10 @@ def generateCommandNumber():
 def generateAddress():
     number = randint(1, 54)
     result = str(number)
-    streetIdx = randint(0, len(streets)) -1
+    streetIdx = randint(0, len(streets)) - 1
     result += ' ' + streets[streetIdx]
     result += ' ' + str(randint(1000, 90000))
-    citiesIdx = randint(0, len(cities)) -1
+    citiesIdx = randint(0, len(cities)) - 1
     result += ' ' + cities[citiesIdx]
     return result
 
