@@ -6,19 +6,19 @@
 #include <sys/socket.h>
 #include <arpa/inet.h>
 
-#include "thread.hpp"
+#include "runnable.hpp"
 
 class Socket {
 	public:
 		Socket(std::string addr, unsigned int port, unsigned int msgMaxSize);
 		virtual ~Socket();
-		void attach(Thread* thread);
+		void attach(Runnable* process);
 		void start();
 
 	private:
 		struct sockaddr_in socketAddress;
 		unsigned int msgMaxSize;
-        Thread* processToRun;
+        Runnable* processToRun;
 };
 
 #endif

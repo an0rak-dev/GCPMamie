@@ -1,12 +1,13 @@
 #include "socket.hpp"
 
 #include "thread.hpp"
+#include "runnable.hpp"
 #include <iostream>
 
-class TestThread : public Thread {
+class TestRunnable : public Runnable {
 	public:
-		inline TestThread() {}
-		virtual ~TestThread() {}
+		inline TestRunnable() {}
+		virtual ~TestRunnable() {}
 		inline void run(std::string params) {
 			std::cout << "Received Connection with params : " << params << std::endl;
 		}
@@ -14,8 +15,8 @@ class TestThread : public Thread {
 
 int main() {
 	Socket socket("127.0.0.1", 10022, 1024);
-	TestThread thread;
-	socket.attach(&thread);
+	TestRunnable runnable;
+	socket.attach(&runnable);
     std::cout << "Listening on port 10022..." << std::endl;
 	socket.start();
 }

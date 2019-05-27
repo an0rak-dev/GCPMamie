@@ -2,12 +2,13 @@
 #define THREAD_HPP
 
 #include <string>
+#include "runnable.hpp"
 
 class Thread {
 	public:
-		inline Thread() {}
-		inline virtual ~Thread() {}
-		virtual void run(std::string params)           = 0;
+		Thread();
+		virtual ~Thread();
+		void start(Runnable* process, std::string params);
 };
 
 #endif
