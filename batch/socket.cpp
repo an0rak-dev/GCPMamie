@@ -4,8 +4,6 @@
 #include <cstdlib>
 #include <iostream>
 
-#include "thread.hpp"
-
 Socket::Socket(std::string addr, unsigned int port, unsigned int maxSize) 
 		: msgMaxSize(maxSize) {
 	in_addr_t ip = inet_addr(addr.c_str());
@@ -50,8 +48,7 @@ void Socket::start() {
 		} else {
             std::string params(buffer);
             free(buffer);
-            Thread connThread;
-            connThread.start(this->processToRun, params);
+            this->processToRun->run(params);
             close(hAccept);
         }
 	}
