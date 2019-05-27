@@ -43,7 +43,7 @@ void Socket::start() {
 		int hAccept = accept(hsocket, NULL, NULL);
 		char* buffer = (char*) malloc(sizeof(char) * this->msgMaxSize + 1);
 		for (int i=0; i < this->msgMaxSize +1; i++) { buffer[i] = '\0'; }
-		int cb = recv(hAccept, buffer, sizeof(buffer), 0);
+		int cb = recv(hAccept, buffer, this->msgMaxSize, 0);
 		if (cb <= 0) {
 			std::cerr << "Unable to read the connected socket." << std::endl;
             free(buffer);
