@@ -18,6 +18,7 @@ class Socket {
 	private:
 		struct sockaddr_in socketAddress;
 		unsigned int msgMaxSize;
+        Thread* processToRun;
 };
 
 #endif

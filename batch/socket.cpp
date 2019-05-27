@@ -1,7 +1,7 @@
 #include "socket.hpp"
 
 #include <unistd.h>
-#include <stdlib.h>
+#include <cstdlib>
 #include <iostream>
 
 Socket::Socket(std::string addr, unsigned int port, unsigned int maxSize) 
@@ -17,7 +17,7 @@ Socket::~Socket() {
 }
 
 void Socket::attach(Thread* thread) {
-
+    this->processToRun = thread;
 }
 
 void Socket::start() {
@@ -44,11 +44,13 @@ void Socket::start() {
 		int cb = recv(hAccept, buffer, sizeof(buffer), 0);
 		if (cb <= 0) {
 			std::cerr << "Unable to read the connected socket." << std::endl;
-			return;
-		}
-		std::cout << "Msg ! " << std::endl << std::string(buffer) << std::endl;
-		free(buffer);
-		close(hAccept);
+            free(buffer);
+		} else {
+            std::string params(buffer);
+            free(buffer);
+            this->processToRun->run(params);
+            close(hAccept);
+        }
 	}
 	close(hsocket); // Never Reached.
 }
