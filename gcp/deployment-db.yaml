@@ -1,0 +1,27 @@
+imports:
+  - path: db-template.py
+
+resources:
+  - name: db
+    type: db-template.py
+    properties:
+      db-instance-name: gcpmamie-prod-3
+
+  #- type: sqladmin.v1beta4.user
+  #  name: gcpmamie-prod-user
+  #  properties:
+  #    name: ssd_pg
+  #    host: "%"
+  #    instance: gcpmamie-prod
+  #    password: "password_en_clair_pas_bien"
+  #- action: gcp-types/sqladmin-v1beta4:sql.instances.import
+  #  name: import-datas
+  #  properties:
+  #    instance: gcpmamie-prod
+  #   project: talk-gcp-mamie
+  #   importContext:
+  #      fileType: SQL
+  #     uri: gs://talk-gcp-mamie-test-sql/dump.sql
+  #  metadata:
+  #   dependsOn: 
+  #      - gcpmamie-prod-user
