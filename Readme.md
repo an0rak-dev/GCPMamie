@@ -42,6 +42,45 @@ $ cd front/
 $ python3 -m http.server 8080
 ```
 
+## How to run it on GCP
+
+### Prepare your GCP project
+
+Once you've created your GCP project, add the role `roles/cloudsql.admin` to the
+Deployement Manager's service account 
+(`<projectnumber>@cloudservices.gserviceaccount.com`).
+
+### Create the infrastructure
+
+In the cloud shell console (or if you have a `gcloud` command installed locally),
+run : 
+
+```
+$ cd gcp/
+$ make setup
+```
+
+or you can create the infrastructure, resource by resource using :
+
+```
+cd gcp/
+$ make install-db
+```
+
+### Clean up 
+
+If you want to clean up your project, you can either remove everything with :
+```
+$ cd gcp/
+$ make teardown
+```
+
+or cleaning up resource by resource : 
+```
+$ cd gcp/
+$ make destroy-db
+```
+
 ## TodoList
 
 ### Mandatory 

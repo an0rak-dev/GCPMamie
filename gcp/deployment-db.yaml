@@ -5,15 +5,9 @@ resources:
   - name: db
     type: db-template.py
     properties:
-      db-instance-name: gcpmamie-prod-3
+      db-instance-name: gcpmamie-prod-4
 
-  #- type: sqladmin.v1beta4.user
-  #  name: gcpmamie-prod-user
-  #  properties:
-  #    name: ssd_pg
-  #    host: "%"
-  #    instance: gcpmamie-prod
-  #    password: "password_en_clair_pas_bien"
+
   #- action: gcp-types/sqladmin-v1beta4:sql.instances.import
   #  name: import-datas
   #  properties:

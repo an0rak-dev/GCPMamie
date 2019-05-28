@@ -1,7 +1,10 @@
-def GenerateConfig(context):
-	resources = [{
+
+DB_NAME_KEY='db-instance-name'
+
+def generateDbResource(context):
+	return {
 		'type': 'sqladmin.v1beta4.instance',
-    	'name': context.properties['db-instance-name'],
+    	'name': context.properties[DB_NAME_KEY],
     	'properties': {
       	'gceZone': 'europe-west1-b',
 			'region': 'europe-west1',
@@ -29,5 +32,25 @@ def GenerateConfig(context):
 				}
 			}
 		}
-	}]
+	}
+
+
+def generateDbUser(context):
+	return {
+		'type': 'sqladmin.v1beta4.user',
+    	'name': context.properties[DB_NAME_KEY] + '-user',
+    	'properties': {
+      	'name': 'ssd_pg',
+      	'host': '%',
+      	'instance': context.properties[DB_NAME_KEY],
+      	'password': 'password_en_clair_pas_bien'
+		}
+	}
+
+
+def GenerateConfig(context):
+	resources = [
+		generateDbResource(context),
+		generateDbUser(context)
+	]
 	return {'resources': resources}
