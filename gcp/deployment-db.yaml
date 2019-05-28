@@ -1,21 +1,16 @@
 imports:
   - path: db-template.py
+  - path: db-import.py
 
 resources:
   - name: db
     type: db-template.py
     properties:
-      db-instance-name: gcpmamie-prod-4
-
-
-  #- action: gcp-types/sqladmin-v1beta4:sql.instances.import
-  #  name: import-datas
-  #  properties:
-  #    instance: gcpmamie-prod
-  #   project: talk-gcp-mamie
-  #   importContext:
-  #      fileType: SQL
-  #     uri: gs://talk-gcp-mamie-test-sql/dump.sql
-  #  metadata:
-  #   dependsOn: 
-  #      - gcpmamie-prod-user
+      db-instance-name: gcpmamie-prod-9
+  - name: datas
+    type: db-import.py
+    properties:
+      db-service-account: $(ref.gcpmamie-prod-9.serviceAccountEmailAddress)
+      db-instance-name: gcpmamie-prod-9
+      dump-bucket: talk-gcp-mamie-test-sql
+      dump-object: dump.sql

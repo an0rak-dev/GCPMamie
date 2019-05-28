@@ -48,7 +48,8 @@ $ python3 -m http.server 8080
 
 Once you've created your GCP project, add the role `roles/cloudsql.admin` to the
 Deployement Manager's service account 
-(`<projectnumber>@cloudservices.gserviceaccount.com`).
+(`<projectnumber>@cloudservices.gserviceaccount.com`). 
+You also needs to create a Cloud Storage bucket and add your SQL dump in it.
 
 ### Create the infrastructure
 
@@ -132,3 +133,5 @@ $ make destroy-db
 * [ ] (Front) Create the cart popup when hovering the icon which will displays
     the cart's content, the quantity, the qty modifier, and the cart total price.
 * [ ] (Front) Create the Checkout Page
+* [ ] (GCP) Create the dump bucket directly from db-import.py and upload the 
+    dump in it.

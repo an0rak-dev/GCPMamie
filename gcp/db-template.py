@@ -44,6 +44,9 @@ def generateDbUser(context):
       	'host': '%',
       	'instance': context.properties[DB_NAME_KEY],
       	'password': 'password_en_clair_pas_bien'
+		},
+		'metadata': {
+			'dependsOn': [context.properties[DB_NAME_KEY]]
 		}
 	}
 
