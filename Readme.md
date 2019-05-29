@@ -135,3 +135,4 @@ $ make destroy-db
 * [ ] (Front) Create the Checkout Page
 * [ ] (GCP) Create the dump bucket directly from db-import.py and upload the 
     dump in it.
+* [ ] (GCP) Script the backend creation in place of a Markdown procedure 

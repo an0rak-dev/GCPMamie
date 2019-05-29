@@ -1,0 +1,41 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: gcpmamie-server-with-cloudsql
+spec:
+  replicas: 1
+  strategy:
+    rollingUpdate:
+      maxSurge: 1
+      maxUnavailable: 1
+    type: RollingUpdate
+  template:
+    metadata:
+      labels:
+        app: gcpmamie-server
+    spec:
+     containers:
+      - name: cloudsql-proxy
+        image: gcr.io/cloudsql-docker/gce-proxy:1.11
+        securityContext:
+          allowPrivilegeEscalation: false
+          procMount: Default
+          runAsUser: 2
+        command:
+         - /cloud_sql_proxy
+         - -instances=talk-gcp-mamie:gcpmamie-prod-9=tcp:3306
+         - -credential_file=/secrets/credentials.json
+        imagePullPolicy: IfNotPresent
+        volumeMounts:
+         - mountPath: /secrets
+           name: service-account-token
+      - name: gcpmamie-server
+        image: eu.gcr.io/talk-gcp-mamie/gcpmamie-server:latest
+        imagePullPolicy: Always
+        args:
+         - --spring.datasource.url=jdbc:postgresql://127.0.0.1:3306/postgres
+     volumes:
+      - name: service-account-token
+        secret:
+          secretName: cloudsql-sa-json 
+
