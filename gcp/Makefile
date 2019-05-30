@@ -1,4 +1,4 @@
-.PHONY: setup teardown install-db destroy-db
+.PHONY: setup teardown install-db destroy-db stop-all start-all
 
 DM=gcloud deployment-manager deployments
 
@@ -15,3 +15,14 @@ install-db:
 
 destroy-db:
 	$(DM) delete $(DM_DB_NAME) -q
+
+stop-all:
+	gcloud sql instances patch gcpmamie-prod-9 --activation-policy NEVER
+	gcloud container clusters resize backend --node-pool default-pool \
+    --num-nodes 0 --zone europe-west1-b
+
+start-all:	
+	gcloud sql instances patch gcpmamie-prod-9 --activation-policy ALWAYS
+	gcloud container clusters resize backend --node-pool default-pool \
+    --num-nodes 3 --zone europe-west1-b
+
