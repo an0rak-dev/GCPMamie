@@ -11,10 +11,10 @@ setup: install-db
 teardown: destroy-db
 
 install-db:
-	$(DM) create $(DM_DB_NAME) --config $(DM_DB_CONF)
+	#$(DM) create $(DM_DB_NAME) --config $(DM_DB_CONF)
 
 destroy-db:
-	$(DM) delete $(DM_DB_NAME) -q
+	#$(DM) delete $(DM_DB_NAME) -q
 
 stop-all:
 	gcloud sql instances patch gcpmamie-prod-9 --activation-policy NEVER

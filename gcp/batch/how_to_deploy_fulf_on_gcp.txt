@@ -1,0 +1,15 @@
+-> Create a dedicated Pubsub topic
+-> Add a pull subscription to this topuc
+-> Create a dedicated Debian VM
+-> Clone the project and compile the batch exe
+-> in the console.cloud.google.com shell create a new SA :
+	gcloud iam service-accounts create pubsub-sa
+-> Add it the subscriber permission :
+	gcloud iam projects add-iam-policy-binding [PROJECT_ID] --member "serviceAccount:pubsub@[PROJECT_ID].iam.gserviceaccount.com" --role "roles/pubsub.subscriber"
+-> Export it
+	gcloud iam service-accounts keys create pubsub-sa.json --iam-account pubsub-sa@[PROJECT_ID].iam.gserviceaccount.com
+-> SCP it to the VM instance
+	gcloud compute scp pubsub-sa.json INSTANCE_NAME:~/pubsub-sa.json
+-> In the VM shell
+	export GOOGLE_APPLICATION_CREDENTIALS="$HOME/pubsub-sa.json"
+-> Launch the python wrapper
