@@ -31,7 +31,8 @@ public class CartService {
 		if (stockService.checkStock(code, quantity)) {
 			int initialQuantity = cartRepository.findQuantityOf(code);
 			stockService.use(code, quantity);
-			if (initialQuantity > 0) {
+            // FIXME 
+			if (initialQuantity >= 0) {
 				cartRepository.updateQuantity(code, initialQuantity + quantity);	
 			} else {
 				cartRepository.insertQuantity(code, quantity);
