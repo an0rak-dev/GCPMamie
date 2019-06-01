@@ -1,11 +1,7 @@
-#!/usr/bin/python3
-
+#!/usr/bin/python
+#coding: utf-8 
 
 from random import randint
-import socket
-
-TCP_IP = '127.0.0.1'
-TCP_PORT = 10022
 
 streets = [
     'Privet Drive',
@@ -14,12 +10,12 @@ streets = [
     'Square Grimmaud',
     'Charing Cross Road',
     'Magnolia Crescent',
-    'Allée des Embrumes',
+    'Allee des Embrumes',
     'Chemin de Traverse'
 ]
 
 cities = [
-    'Pré-au-Lard',
+    'Pre-au-Lard',
     "Godric's Hollow",
     'Little Whinging',
     'Little Hangleton',
@@ -51,6 +47,18 @@ def generateAddress():
     result += ' ' + cities[citiesIdx]
     return result
 
+import time
+from google.cloud import pubsub_v1
+project_id='talk-gcp-mamie'
+topic_id='fulfilment'
+publisher = pubsub_v1.PublisherClient()
+topicPath = publisher.topic_path(project_id, topic_id)
+
+def callback(future):
+    if future.exception(timeout=30):
+        print('Exception while pushing to fulfilment topic')
+    else:
+        print(future.result())
 
 def post():
     commandNumber = generateCommandNumber()
@@ -58,13 +66,11 @@ def post():
     methodIdx = randint(0, len(deliveryMethods)) - 1
     method = deliveryMethods[methodIdx]
     fullMsg = commandNumber + '|' + addr + '|' + method
-    s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-    s.connect((TCP_IP, TCP_PORT))
-    s.send(fullMsg.encode('utf-8'))
-    s.recv(500)
-    s.close()
-
+    data = fullMsg.encode('utf-8')
+    result = publisher.publish(topicPath, data=data)
+    result.add_done_callback(callback)
 
 if __name__ == '__main__':
     while True:
+        time.sleep(30)
         post()
