@@ -2,6 +2,8 @@ package com.github.an0rakdev.talkgcpmamie.services;
 
 import java.util.NoSuchElementException;
 import com.github.an0rakdev.talkgcpmamie.datas.CartRepository;
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,7 +14,7 @@ import javax.persistence.PersistenceException;
 
 @Service
 public class CartService {
-	private Logger logger = LoggerFactory.getLogger(CartService.class);
+	private Log logger = LogFactory.getLog(CartService.class);
 	@Autowired
 	private ProductService productService;
 

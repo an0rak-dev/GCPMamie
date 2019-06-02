@@ -1,12 +1,10 @@
 package com.github.an0rakdev.talkgcpmamie.controllers;
 
-import java.util.ArrayList;
-import java.util.List;
 import java.util.NoSuchElementException;
 
 import com.github.an0rakdev.talkgcpmamie.services.CartService;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import org.apache.juli.logging.Log;
+import org.apache.juli.logging.LogFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -18,7 +16,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 @RestController
 @RequestMapping("/cart")
 public class CartController {
-	private Logger logger = LoggerFactory.getLogger(CartController.class);
+	private Log logger = LogFactory.getLog(CartController.class);
 
 	@Autowired 
 	private CartService cartService;

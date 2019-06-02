@@ -5,6 +5,8 @@ import java.util.HashMap;
 import javax.persistence.*;
 
 import com.github.an0rakdev.talkgcpmamie.pojos.Cart;
+import org.apache.juli.logging.Log;
+import org.apache.juli.logging.LogFactory;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -13,7 +15,7 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public class CartRepository {
-	Logger logger = LoggerFactory.getLogger(CartRepository.class);
+	Log logger = LogFactory.getLog(CartRepository.class);
 
 	@PersistenceContext
 	private EntityManager em;
