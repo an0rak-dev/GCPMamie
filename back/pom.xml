@@ -32,6 +32,7 @@
         <dependency>
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-gcp-starter-logging</artifactId>
+            <version>1.1.1.RELEASE</version>
         </dependency>
     </dependencies>
 
