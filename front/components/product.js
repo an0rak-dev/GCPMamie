@@ -90,7 +90,7 @@ window.customElements.define('ssd-product', class extends HTMLElement {
         super()
         this.addEventListener('click', () => {
             var code = this.getAttribute('code');
-            window.location = "/product_page.html?ref=" + code;
+            window.location = "/salle-sur-demande/product_page.html?ref=" + code;
         });
         this.attachShadow({mode: 'open'});
         this.template = document.createElement('template');
