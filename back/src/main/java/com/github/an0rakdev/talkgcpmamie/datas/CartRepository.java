@@ -2,17 +2,19 @@ package com.github.an0rakdev.talkgcpmamie.datas;
 
 import java.util.Map;
 import java.util.HashMap;
-import javax.persistence.EntityManager;
-import javax.persistence.NoResultException;
-import javax.persistence.PersistenceContext;
-import javax.persistence.Query;
+import javax.persistence.*;
+
 import com.github.an0rakdev.talkgcpmamie.pojos.Cart;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.stereotype.Repository;
 
 @Repository
 public class CartRepository {
+	Logger logger = LoggerFactory.getLogger(CartRepository.class);
+
 	@PersistenceContext
 	private EntityManager em;
 
@@ -35,7 +37,9 @@ public class CartRepository {
 		Query q = em.createQuery("UPDATE Cart SET quantity = :q WHERE code = :c");
 		q.setParameter("q", (double) newQuantity);
 		q.setParameter("c", code);
-		q.executeUpdate();
+		if (q.executeUpdate() <= 0) {
+			throw new EntityNotFoundException(code);
+		};
 	}
 
 	@Transactional

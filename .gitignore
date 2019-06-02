@@ -2,3 +2,4 @@
 *.vscode
 batch/batch
 batch/*.o
+*.idea
