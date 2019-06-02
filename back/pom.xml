@@ -27,13 +27,6 @@
             <artifactId>postgresql</artifactId>
             <version>42.2.5</version>
         </dependency>
-
-        <!-- GCP Dedicated code -->
-        <dependency>
-            <groupId>com.google.cloud</groupId>
-            <artifactId>google-cloud-errorreporting</artifactId>
-            <version>0.94.0-beta</version>
-        </dependency>
     </dependencies>
 
     <properties>

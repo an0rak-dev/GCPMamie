@@ -28,12 +28,13 @@ public class CartRepository {
 			} 
 			return result.intValue();
 		} catch (NoResultException ex) {
+			logger.warn("No result in cart for code " + code);
 			return 0;
 		}
 	}
 
 	@Transactional
-	public void updateQuantity(String code, int newQuantity) {
+	public void updateQuantity(String code, int newQuantity) throws PersistenceException {
 		Query q = em.createQuery("UPDATE Cart SET quantity = :q WHERE code = :c");
 		q.setParameter("q", (double) newQuantity);
 		q.setParameter("c", code);
