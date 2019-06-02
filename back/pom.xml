@@ -27,6 +27,12 @@
             <artifactId>postgresql</artifactId>
             <version>42.2.5</version>
         </dependency>
+
+        <!-- GCP -->
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-gcp-starter-logging</artifactId>
+        </dependency>
     </dependencies>
 
     <properties>
