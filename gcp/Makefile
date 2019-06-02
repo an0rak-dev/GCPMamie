@@ -19,10 +19,17 @@ destroy-db:
 stop-all:
 	gcloud sql instances patch gcpmamie-prod-9 --activation-policy NEVER
 	gcloud container clusters resize backend --node-pool default-pool \
-    --num-nodes 0 --zone europe-west1-b
+    --num-nodes 0 --zone europe-west1-b --quiet
 
 start-all:	
 	gcloud sql instances patch gcpmamie-prod-9 --activation-policy ALWAYS
 	gcloud container clusters resize backend --node-pool default-pool \
-    --num-nodes 3 --zone europe-west1-b
+    --num-nodes 3 --zone europe-west1-b --quiet
+
+redeploy-back:
+	gcloud container clusters resize backend --node-pool default-pool \
+	 --num-nodes 0 --zone europe-west1-b --quiet
+	gcloud container clusters resize backend --node-pool default-pool \
+	 --num-nodes 3 --zone europe-west1-b --quiet
+
 

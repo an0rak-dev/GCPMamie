@@ -35,6 +35,6 @@ function addToCart(code, qty) {
     body.qty = qty;
     var status = doPost(BACK + "/cart", JSON.stringify(body));
     if (status != 200) {
-        window.location = '/error.html?code=' + status;
+        window.location = '/salle-sur-demande/error.html?code=' + status;
     }
 }
