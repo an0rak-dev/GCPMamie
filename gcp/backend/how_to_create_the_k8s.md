@@ -4,7 +4,7 @@
 	`docker build -t eu.gcr.io/$PROJECT_ID/$IMG_ID:latest`
 * Push the image:
 	`docker push`
-* On the GCP Console , create a new GKE cluster with 3 nodes
+* Use create_cluster.sh to create the K8S cluster
 * Create a Service account which will have access to CloudSQL:
 	`gcloud iam service-accounts create $SERVICE_ACCOUNT_NAME --display-name "Whatever you want"`
 * Add the client SQL role to the SA :
