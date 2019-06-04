@@ -42,7 +42,7 @@ public class CartService {
 	}
 
 	private boolean moveProductFromStockToCart(String code, int quantity) {
-		if (stockService.checkStock(code, quantity) && cartRepository.insertQuantity(code, quantity)) {
+		if (stockService.checkStock(code, quantity) && cartRepository.updateQuantityOf(code, quantity)) {
 			try {
 				stockService.use(code, quantity);
 				return true;
