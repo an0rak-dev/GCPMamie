@@ -38,11 +38,13 @@ public class CartRepository {
 	}
 
 	@Transactional
-	public boolean updateQuantityOf(String code, int newQuantity) {
+	public void updateQuantityOf(String code, int newQuantity) throws SQLException {
 		Query q = em.createQuery("UPDATE Cart c SET c.quantity = :q WHERE c.code = :c");
 		q.setParameter("q", (double) newQuantity);
 		q.setParameter("c", code);
-		return q.executeUpdate() <= 0;
+		if (q.executeUpdate() <= 0) {
+			throw new SQLException("Unable to update");
+		}
 	}
 
 	@Transactional
