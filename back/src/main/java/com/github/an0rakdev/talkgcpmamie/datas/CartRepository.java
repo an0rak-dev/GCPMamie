@@ -15,6 +15,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.stereotype.Repository;
 
+@NamedQuery(name="add-product-to", query="UPDATE Cart c SET c.quantity = :q WHERE c.code = :c")
 @Repository
 public class CartRepository {
 	Log logger = LogFactory.getLog(CartRepository.class);
@@ -39,10 +40,11 @@ public class CartRepository {
 
 	@Transactional
 	public void updateQuantityOf(String code, int newQuantity) throws SQLException {
-		Query q = em.createQuery("UPDATE Cart c SET c.quantity = :q WHERE c.code = :c");
+		Query q = em.createNamedQuery("add-product-to");
 		q.setParameter("q", (double) newQuantity);
 		q.setParameter("c", code);
-		if (q.executeUpdate() <= 0) {
+		int linesImpacted = q.executeUpdate();
+		if (linesImpacted <= 0) {
 			throw new SQLException("Unable to update");
 		}
 	}
