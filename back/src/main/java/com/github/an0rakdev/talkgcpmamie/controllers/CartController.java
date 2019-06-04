@@ -29,11 +29,13 @@ public class CartController {
 
 	@PostMapping("")
 	public ResponseEntity<Void> addToCart(@RequestBody AddBody body) {
-		if (!cartService.addProduct(body.code, (null == body.qty) ? 0 : body.qty)) {
+		try {
+			cartService.addProduct(body.code, (null == body.qty) ? 0 : body.qty);
+			return ResponseEntity.ok().build();
+		} catch (ServiceException ex) {
 			logger.error("Unable to add the product to the cart !");
 			return ResponseEntity.status(500).build();
 		}
-		return ResponseEntity.ok().build();
 	}
 
 	private static class AddBody {

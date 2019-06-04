@@ -29,12 +29,13 @@ public class CartService {
 	@Autowired
 	private CartRepository cartRepository;
 
-	public boolean addProduct(String code, int quantity) {
+	public void addProduct(String code, int quantity) throws ServiceException {
 		Optional<Product> optionalProduct = productService.getDetailOf(code);
 		if (optionalProduct.isPresent()) {
-			return this.moveProductFromStockToCart(code, quantity);
+			if (!this.moveProductFromStockToCart(code, quantity)) {
+				throw new ServiceException("Unable to add to cart");
+			}
 		}
-		return false;
 	}	
 
 	public int getNbOfProducts() {
