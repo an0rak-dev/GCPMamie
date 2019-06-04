@@ -48,6 +48,8 @@ public class CartService {
 			} else {
 				cartRepository.updateQuantity(code, initialQuantity + quantity);
 			}
+		} else {
+			logger.warn("Not enough stock for product "+ code + " (requested "+ quantity +")");
 		}
 	}
 }
