@@ -38,8 +38,23 @@ public class CartRepository {
 	}
 
 	@Transactional
+	public void updateQuantityOf(String code, int newQuantity) throws SQLException {
+		Query q = em.createQuery("UPDATE Cart c SET c.quantity = :q WHERE c.code = :c");
+		q.setParameter("q", newQuantity);
+		q.setParameter("c", code);
+		if (q.executeUpdate() <= 0) {
+			throw new SQLException("Can't update Cart");
+		}
+	}
+
+	@Transactional
 	public void insertQuantity(String code, int quantity) throws SQLException {
-		this.em.persist(new Cart(code, quantity));
+		Query q = em.createNativeQuery("INSERT INTO ssd_prod.cart VALUES (:c,:q)");
+		q.setParameter("c", code);
+		q.setParameter("q", quantity);
+		if (q.executeUpdate() <= 0) {
+			throw new SQLException("Can't insert in Cart");
+		}
 	}
 
 	public int countAll() {

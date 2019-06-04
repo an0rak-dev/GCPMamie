@@ -2,7 +2,10 @@ package com.github.an0rakdev.talkgcpmamie.services;
 
 import java.sql.SQLException;
 import java.util.NoSuchElementException;
+import java.util.Optional;
+
 import com.github.an0rakdev.talkgcpmamie.datas.CartRepository;
+import com.github.an0rakdev.talkgcpmamie.pojos.Product;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.postgresql.util.PSQLException;
@@ -26,27 +29,30 @@ public class CartService {
 	@Autowired
 	private CartRepository cartRepository;
 
-	public void addProduct(String code, int quantity) throws NoSuchElementException, ServiceException {
-		productService.getDetailOf(code)
-			.orElseThrow(() -> new NoSuchElementException());
-
-		this.moveProductFromStockToCart(code, quantity);
+	public boolean addProduct(String code, int quantity) {
+		Optional<Product> optionalProduct = productService.getDetailOf(code);
+		if (optionalProduct.isPresent()) {
+			return this.moveProductFromStockToCart(code, quantity);
+		}
+		return false;
 	}	
 
 	public int getNbOfProducts() {
 		return cartRepository.countAll();
 	}
 
-	private void moveProductFromStockToCart(String code, int quantity) throws ServiceException {
+	private boolean moveProductFromStockToCart(String code, int quantity) {
 		if (stockService.checkStock(code, quantity)) {
 			try {
 				cartRepository.insertQuantity(code, quantity);
 				stockService.use(code, quantity);
 			} catch (SQLException ex) {
-				throw new ServiceException("Unable to add the product " + code + " to the cart");
+				return false;
 			}
 		} else {
 			logger.warn("Not enough stock for product "+ code + " (requested "+ quantity +")");
+			return false;
 		}
+		return true;
 	}
 }
