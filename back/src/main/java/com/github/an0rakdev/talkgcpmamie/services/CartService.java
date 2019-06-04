@@ -42,17 +42,16 @@ public class CartService {
 	}
 
 	private boolean moveProductFromStockToCart(String code, int quantity) {
-		if (stockService.checkStock(code, quantity)) {
+		if (stockService.checkStock(code, quantity) && cartRepository.insertQuantity(code, quantity)) {
 			try {
-				cartRepository.insertQuantity(code, quantity);
 				stockService.use(code, quantity);
+				return true;
 			} catch (SQLException ex) {
 				return false;
 			}
 		} else {
 			logger.warn("Not enough stock for product "+ code + " (requested "+ quantity +")");
-			return false;
 		}
-		return true;
+		return false;
 	}
 }
