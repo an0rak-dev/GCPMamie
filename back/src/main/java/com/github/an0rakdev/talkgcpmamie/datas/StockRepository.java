@@ -24,7 +24,7 @@ public class StockRepository {
 
 	@Transactional
 	public void updateQuantity(String code, double newQuantity) throws SQLException {
-		Query q = em.createQuery("UPDATE Stock SET s.quantity = :q WHERE s.code = :c");
+		Query q = em.createQuery("UPDATE Stock s SET s.quantity = :q WHERE s.code = :c");
 		q.setParameter("c", code);
 		q.setParameter("q", newQuantity);
 		if (q.executeUpdate() <= 0) {
