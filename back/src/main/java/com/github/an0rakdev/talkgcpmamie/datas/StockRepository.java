@@ -1,22 +1,34 @@
 package com.github.an0rakdev.talkgcpmamie.datas;
 
-import java.util.Map;
-import java.util.HashMap;
 import com.github.an0rakdev.talkgcpmamie.pojos.Stock;
-import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.transaction.annotation.Transactional;
-import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
+import java.sql.SQLException;
+
 @Repository
-public interface StockRepository extends JpaRepository<Stock, String> {
-	
-	@Query(value="SELECT s FROM Stock s WHERE s.code = ?1")
-	public Stock find(String code);
+public class StockRepository {
+
+	@PersistenceContext
+	private EntityManager em;
+
+	public Stock find(String code) {
+		Query q = em.createQuery("SELECT s FROM Stock s WHERE s.code = :c");
+		q.setParameter("c", code);
+		return (Stock) q.getSingleResult();
+	}
 
 	@Transactional
-	@Modifying
-	@Query(value="UPDATE Stock SET quantity = ?2 WHERE code = ?1")
-	public void updateQuantity(String code, double newQuantity);
+	public void updateQuantity(String code, double newQuantity) throws SQLException {
+		Query q = em.createQuery("UPDATE Stock SET s.quantity = :q WHERE s.code = :c");
+		q.setParameter("c", code);
+		q.setParameter("q", newQuantity);
+		if (q.executeUpdate() <= 0) {
+			throw new SQLException("No update on Stock made for " + code);
+		};
+	}
 }

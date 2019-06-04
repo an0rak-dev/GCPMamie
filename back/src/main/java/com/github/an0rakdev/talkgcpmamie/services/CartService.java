@@ -1,9 +1,11 @@
 package com.github.an0rakdev.talkgcpmamie.services;
 
+import java.sql.SQLException;
 import java.util.NoSuchElementException;
 import com.github.an0rakdev.talkgcpmamie.datas.CartRepository;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
+import org.postgresql.util.PSQLException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,29 +26,25 @@ public class CartService {
 	@Autowired
 	private CartRepository cartRepository;
 
-	public void addProduct(String code, int quantity) throws NoSuchElementException, IllegalStateException {
+	public void addProduct(String code, int quantity) throws NoSuchElementException, ServiceException {
 		productService.getDetailOf(code)
 			.orElseThrow(() -> new NoSuchElementException());
 
-		try {
-			this.moveProductFromStockToCart(code, quantity);
-		} catch (PersistenceException ex) {
-			throw new IllegalStateException("Unable to move stock to cart", ex);
-		}
+		this.moveProductFromStockToCart(code, quantity);
 	}	
 
 	public int getNbOfProducts() {
 		return cartRepository.countAll();
 	}
 
-	private void moveProductFromStockToCart(String code, int quantity) throws PersistenceException {
+	private void moveProductFromStockToCart(String code, int quantity) throws ServiceException {
 		if (stockService.checkStock(code, quantity)) {
-			//if (cartRepository.hasQuantityFor(code)) {
+			try {
 				cartRepository.insertQuantity(code, quantity);
-			//} else {
-			//	cartRepository.updateQuantity(code, quantity);
-			//}
-			stockService.use(code, quantity);
+				stockService.use(code, quantity);
+			} catch (SQLException ex) {
+				throw new ServiceException("Unable to add the product " + code + " to the cart");
+			}
 		} else {
 			logger.warn("Not enough stock for product "+ code + " (requested "+ quantity +")");
 		}

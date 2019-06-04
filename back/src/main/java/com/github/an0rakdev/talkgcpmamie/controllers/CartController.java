@@ -3,6 +3,7 @@ package com.github.an0rakdev.talkgcpmamie.controllers;
 import java.util.NoSuchElementException;
 
 import com.github.an0rakdev.talkgcpmamie.services.CartService;
+import com.github.an0rakdev.talkgcpmamie.services.ServiceException;
 import org.apache.juli.logging.Log;
 import org.apache.juli.logging.LogFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -31,7 +32,7 @@ public class CartController {
 		try {
 			cartService.addProduct(body.code, (null == body.qty) ? 0 : body.qty);
 			return ResponseEntity.ok().build();
-		} catch (NoSuchElementException | IllegalStateException ex) {
+		} catch (NoSuchElementException | ServiceException ex) {
 			logger.error("Unable to add the product to the cart !", ex);
 			return ResponseEntity.status(500).build();
 		}

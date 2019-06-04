@@ -1,5 +1,6 @@
 package com.github.an0rakdev.talkgcpmamie.datas;
 
+import java.sql.SQLException;
 import java.util.Map;
 import java.util.HashMap;
 import javax.persistence.*;
@@ -7,6 +8,7 @@ import javax.persistence.*;
 import com.github.an0rakdev.talkgcpmamie.pojos.Cart;
 import org.apache.juli.logging.Log;
 import org.apache.juli.logging.LogFactory;
+import org.postgresql.util.PSQLException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -35,22 +37,8 @@ public class CartRepository {
 		}
 	}
 
-	public boolean hasQuantityFor(String code) {
-		return this.findQuantityOf(code) > 0;
-	}
-
 	@Transactional
-	public void updateQuantity(String code, int newQuantity) throws PersistenceException {
-		Query q = em.createQuery("UPDATE Cart SET quantity = :q WHERE code = :c");
-		q.setParameter("q", (double) newQuantity);
-		q.setParameter("c", code);
-		if (q.executeUpdate() <= 0) {
-			throw new EntityNotFoundException(code);
-		};
-	}
-
-	@Transactional
-	public void insertQuantity(String code, int quantity) {
+	public void insertQuantity(String code, int quantity) throws SQLException {
 		this.em.persist(new Cart(code, quantity));
 	}
 
