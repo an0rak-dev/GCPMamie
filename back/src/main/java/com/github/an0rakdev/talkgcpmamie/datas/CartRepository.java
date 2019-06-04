@@ -35,6 +35,10 @@ public class CartRepository {
 		}
 	}
 
+	public boolean hasQuantityFor(String code) {
+		return this.findQuantityOf(code) > 0;
+	}
+
 	@Transactional
 	public void updateQuantity(String code, int newQuantity) throws PersistenceException {
 		Query q = em.createQuery("UPDATE Cart SET quantity = :q WHERE code = :c");

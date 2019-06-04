@@ -41,13 +41,12 @@ public class CartService {
 
 	private void moveProductFromStockToCart(String code, int quantity) throws PersistenceException {
 		if (stockService.checkStock(code, quantity)) {
-			int initialQuantity = cartRepository.findQuantityOf(code);
-			stockService.use(code, quantity);
-			if (initialQuantity < 0) {
+			//if (cartRepository.hasQuantityFor(code)) {
 				cartRepository.insertQuantity(code, quantity);
-			} else {
-				cartRepository.updateQuantity(code, initialQuantity + quantity);
-			}
+			//} else {
+			//	cartRepository.updateQuantity(code, quantity);
+			//}
+			stockService.use(code, quantity);
 		} else {
 			logger.warn("Not enough stock for product "+ code + " (requested "+ quantity +")");
 		}
