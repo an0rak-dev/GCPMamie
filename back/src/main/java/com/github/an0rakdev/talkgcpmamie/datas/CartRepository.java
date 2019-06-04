@@ -15,7 +15,6 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.stereotype.Repository;
 
-@NamedQuery(name="add-product-to", query="UPDATE Cart c SET c.quantity = :q WHERE c.code = :c")
 @Repository
 public class CartRepository {
 	Log logger = LogFactory.getLog(CartRepository.class);

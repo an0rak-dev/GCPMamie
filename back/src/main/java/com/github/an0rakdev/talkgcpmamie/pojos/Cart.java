@@ -1,10 +1,9 @@
 package com.github.an0rakdev.talkgcpmamie.pojos;
 
-import javax.persistence.Column;
-import javax.persistence.Id;
-import javax.persistence.Entity;
-import javax.persistence.Table;
+import javax.persistence.*;
 
+
+@NamedQuery(name="add-product-to", query="UPDATE Cart c SET c.quantity = :q WHERE c.code = :c")
 @Entity
 @Table(name="cart")
 public class Cart {
