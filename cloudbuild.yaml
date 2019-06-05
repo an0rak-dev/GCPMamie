@@ -1,0 +1,15 @@
+steps:
+- name: 'gcr.io/$PROJECT_ID/git'
+  args: ['clone', 'https://source.developers.google.com/p/$PROJECT_ID/r/talk-gcp-mamie'] 
+- name: 'gcr.io/cloud-builders/mvn'
+  args: ['clean', 'install']
+- name: 'gcr.io/cloud-builders/docker'
+  args: ['build', '-t', 'eu.gcr.io/$PROJECT_ID/gcpmamie-server:latest', '.']
+- name: 'gcr.io/cloud-builders/docker'
+  args: ['push', 'eu.gcr.io/$project_id/gcpmamie-server:latest']
+- name: 'gcr.io/cloud-builders/kubectl'
+  args: ['delete', 'pods', '--all']
+  env:
+  - 'CLOUDSDK_COMPUTE_ZONE=europe-west1-b'
+  - 'CLOUDSK_CONTAINER_CLUSTER=backend'
+  

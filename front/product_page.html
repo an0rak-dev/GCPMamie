@@ -40,7 +40,7 @@
                 var product = getOneProduct(url.searchParams.get("ref"));
                 document.getElementById("title").innerHTML = product.name;
                 document.getElementById("code").innerHTML = product.code;
-                document.getElementById("description").innerHTML = product.description.replace('\n','<br/>');
+                document.getElementById("description").innerHTML = product.description.replace('\\n','<br/>');
 
                 document.getElementById("addCart").addEventListener('click', 
                     () => {
