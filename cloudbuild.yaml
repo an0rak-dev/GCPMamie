@@ -13,5 +13,5 @@ steps:
   args: ['delete', 'pods', '--all']
   env:
   - 'CLOUDSDK_COMPUTE_ZONE=europe-west1-b'
-  - 'CLOUDSK_CONTAINER_CLUSTER=backend'
+  - 'CLOUDSDK_CONTAINER_CLUSTER=backend'
   
