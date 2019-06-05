@@ -8,7 +8,7 @@ steps:
   args: ['build', '-t', 'eu.gcr.io/$PROJECT_ID/gcpmamie-server:latest', '.']
   dir: 'talk-gcp-mamie/back'
 - name: 'gcr.io/cloud-builders/docker'
-  args: ['push', 'eu.gcr.io/$project_id/gcpmamie-server:latest']
+  args: ['push', 'eu.gcr.io/$PROJECT_ID/gcpmamie-server:latest']
 - name: 'gcr.io/cloud-builders/kubectl'
   args: ['delete', 'pods', '--all']
   env:
