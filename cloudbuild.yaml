@@ -1,5 +1,5 @@
 steps:
-- name: 'gcr.io/$PROJECT_ID/git'
+- name: 'gcr.io/cloud-builders/git'
   args: ['clone', 'https://source.developers.google.com/p/$PROJECT_ID/r/talk-gcp-mamie'] 
 - name: 'gcr.io/cloud-builders/mvn'
   args: ['clean', 'install']
