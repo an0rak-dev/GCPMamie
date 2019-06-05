@@ -3,8 +3,10 @@ steps:
   args: ['clone', 'https://source.developers.google.com/p/$PROJECT_ID/r/talk-gcp-mamie'] 
 - name: 'gcr.io/cloud-builders/mvn'
   args: ['clean', 'install']
+  dir: 'talk-gcp-mamie'
 - name: 'gcr.io/cloud-builders/docker'
   args: ['build', '-t', 'eu.gcr.io/$PROJECT_ID/gcpmamie-server:latest', '.']
+  dir: 'talk-gcp-mamie'
 - name: 'gcr.io/cloud-builders/docker'
   args: ['push', 'eu.gcr.io/$project_id/gcpmamie-server:latest']
 - name: 'gcr.io/cloud-builders/kubectl'
