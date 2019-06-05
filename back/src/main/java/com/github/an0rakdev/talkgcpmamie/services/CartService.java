@@ -39,7 +39,7 @@ public class CartService {
 	}	
 
 	public int getNbOfProducts() {
-		return cartRepository.countAll() + 42;
+		return cartRepository.countAll();
 	}
 
 	private boolean moveProductFromStockToCart(String code, int quantity) {
