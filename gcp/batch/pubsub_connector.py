@@ -1,6 +1,7 @@
 #!/usr/bin/python3
 
 import socket
+import subprocess
 import time
 from google.cloud import pubsub_v1
 
@@ -17,6 +18,7 @@ def callback(msg):
 
 
 def main():
+    subprocess.Popen(['batch'], shell=True, stdin=None, stdout=None, stderr=None)
     subscriber = pubsub_v1.SubscriberClient()
     subscriptionPath = subscriber.subscription_path(project_id, subscription_id)
     

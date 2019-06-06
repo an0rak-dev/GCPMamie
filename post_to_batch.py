@@ -72,5 +72,5 @@ def post():
 
 if __name__ == '__main__':
     while True:
-        time.sleep(8)
+        time.sleep(4)
         post()

@@ -40,6 +40,9 @@
                 var product = getOneProduct(url.searchParams.get("ref"));
                 document.getElementById("title").innerHTML = product.name;
                 document.getElementById("code").innerHTML = product.code;
+					 if (product.img !== undefined) { 
+						 document.getElementById("img").src = product.img;
+					 }
                 document.getElementById("description").innerHTML = product.description.replace(/\n/g,'<br/>');
 
                 document.getElementById("addCart").addEventListener('click', 

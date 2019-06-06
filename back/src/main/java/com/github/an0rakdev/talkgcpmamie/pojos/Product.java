@@ -13,6 +13,7 @@ public class Product {
 	private String name;
 	private Double price;
 	private String description;
+	private String img;
 
 	public Product() {
 		this("", "", 0.0, "");
@@ -44,6 +45,11 @@ public class Product {
 	@Column(name = "p_desc")
 	public String getDescription() {
 		return this.description;
+	}
+
+	@Column(name="img")
+	public String getImage() {
+		return this.img;
 	}
 
 	public void setCode(String code) { this.code = code; }
