@@ -19,11 +19,12 @@ public class Product {
 		this("", "", 0.0, "");
 	}
 
-	public Product(String code, String name, double price, String desc) {
+	public Product(String code, String name, double price, String desc, String imgSrc) {
 		this.code = code;
 		this.name = name;
 		this.price = price;
 		this.description = desc;
+		this.img = imgSrc;
 	}
 
 	@Id
