@@ -87,9 +87,8 @@ window.customElements.define('ssd-header', class extends HTMLElement {
         var spanCounter = clone.querySelector("#cartCount");
         spanCounter.innerHTML = getCartCount();
         frontText.addEventListener('click', () => {
-            window.location = '/'
+            window.location = '/salle-sur-demande/index.html'
         });
-        //this.shadowRoot.test = function() { console.log('test'); }  
         this.shadowRoot.appendChild(clone);
     }
 });

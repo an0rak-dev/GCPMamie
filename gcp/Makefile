@@ -32,4 +32,27 @@ redeploy-back:
 	gcloud container clusters resize backend --node-pool default-pool \
 	 --num-nodes 3 --zone europe-west1-b --quiet
 
+create-group:
+	gcloud compute instance-groups managed create fulf-group  \
+    --base-instance-name=fulf  \
+    --size 1  \
+    --template fulf-template  \
+    --zone europe-west1-b
+
+scale-group:
+	gcloud beta compute instance-groups managed set-autoscaling fulf-group  \
+    --zone europe-west1-b  \
+    --min-num-replicas=0 --max-num-replicas=8  \
+    --update-stackdriver-metric=pubsub.googleapis.com/subscription/num_undelivered_messages  \
+    --stackdriver-metric-filter="resource.type=pubsub_subscription AND resource.label.subscription_id=nextOrder"  \
+    --stackdriver-metric-single-instance-assignment=1
+
+
+
+
+
+
+
+
+
 

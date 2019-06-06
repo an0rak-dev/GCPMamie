@@ -101,7 +101,8 @@ window.customElements.define('ssd-product', class extends HTMLElement {
             
             var name = this.getAttribute("name");
             var imgLink = this.getAttribute("imgLink");
-            if (imgLink === undefined || imgLink == null) {
+				console.log("IMAGE -> " + imgLink);
+            if (imgLink === undefined || imgLink === 'undefined' || imgLink.length == 0 ) {
                 imgLink = "https://www.novovelo.com/wp-content/themes/claue/assets/images/placeholder.png";
             }
             var price = this.getAttribute("price");
