@@ -16,7 +16,7 @@ public class Product {
 	private String img;
 
 	public Product() {
-		this("", "", 0.0, "");
+		this("", "", 0.0, "", "");
 	}
 
 	public Product(String code, String name, double price, String desc, String imgSrc) {
@@ -25,10 +25,6 @@ public class Product {
 		this.price = price;
 		this.description = desc;
 		this.img = imgSrc;
-	}
-
-	public Product(String code, String name, double price, String desc) {
-		this(code, name, price, desc, "");
 	}
 
 	@Id
@@ -64,4 +60,6 @@ public class Product {
 	public void setPrice(Double price) { this.price = price; }
 
 	public void setDescription(String desc) { this.description = desc; }
+
+	public void setImage(String img) { this.img = img; }
 }
