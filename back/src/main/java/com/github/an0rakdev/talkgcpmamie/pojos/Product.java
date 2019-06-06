@@ -64,4 +64,6 @@ public class Product {
 	public void setPrice(Double price) { this.price = price; }
 
 	public void setDescription(String desc) { this.description = desc; }
+
+	public void setImage(String img) { this.img = img; }
 }
