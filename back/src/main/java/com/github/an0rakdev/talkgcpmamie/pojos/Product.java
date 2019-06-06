@@ -27,6 +27,10 @@ public class Product {
 		this.img = imgSrc;
 	}
 
+	public Product(String code, String name, double price, String desc) {
+		this(code, name, price, desc, "");
+	}
+
 	@Id
 	@Column(name = "p_code")
 	public String getCode() {
