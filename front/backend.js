@@ -1,6 +1,6 @@
 const PROD=true;
 
-const BACK = (PROD) ? "http://35.233.41.23:8081/api/v1" : "http://localhost:8081/api/v1";
+const BACK = (PROD) ? "http://35.195.75.195:8081/api/v1" : "http://localhost:8081/api/v1";
 
 function doGet(url) {
     var xmlHttp = new XMLHttpRequest();
