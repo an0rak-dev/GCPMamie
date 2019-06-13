@@ -3,3 +3,4 @@
 batch/batch
 batch/*.o
 *.idea
+*/bin
