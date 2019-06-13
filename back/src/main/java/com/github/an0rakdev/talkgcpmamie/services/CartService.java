@@ -45,13 +45,8 @@ public class CartService {
 	private boolean moveProductFromStockToCart(String code, int quantity) {
 		if (stockService.checkStock(code, quantity)) {
 			try {
-                int initialQuantity = cartRepository.findQuantityOf(code);
-                if (0 == initialQuantity) {
-                    cartRepository.insertQuantity(code, quantity);
-                } else {
-				    cartRepository.updateQuantityOf(code, quantity);
-                }
-				stockService.use(code, quantity);
+                cartRepository.updateQuantityOf(code, quantity);
+     			stockService.use(code, quantity);
 				return true;
 			} catch (SQLException ex) {
 				return false;
