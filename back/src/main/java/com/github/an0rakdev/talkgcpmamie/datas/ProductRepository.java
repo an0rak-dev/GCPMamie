@@ -10,7 +10,7 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface ProductRepository extends JpaRepository<Product, String> {
-	@Query("SELECT p FROM Product p")
+	@Query("SELECT p FROM Product p ORDER BY p.code ASC")
 	public List<Product> list();
 
 	@Query("SELECT p FROM Product p WHERE p.code = ?1")
