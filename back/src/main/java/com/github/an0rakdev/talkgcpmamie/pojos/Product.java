@@ -48,7 +48,7 @@ public class Product {
 		return this.description;
 	}
 
-	@Column(name="img")
+	@Column(name="p_img_link")
 	public String getImage() {
 		return this.img;
 	}

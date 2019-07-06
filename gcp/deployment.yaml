@@ -1,0 +1,30 @@
+resources:                                                                      
+  - name: enable-apis                                                          
+    type: deploymentmanager.v2.virtual.enableService                           
+    properties:                                                                
+      consumerId: project:rich-experience-219613                              
+      serviceName: sqladmin.googleapis.com                                    
+                                                                              
+  - name: test-sql-instance                                                    
+    type: sqladmin.v1beta4.instance                                            
+    metadata:                                                                  
+       dependsOn:                                                              
+          - enable-apis                                                        
+    properties:                                                                
+       backendType: SECOND_GEN                                                 
+       databaseVersion: POSTGRES_11                                            
+       region: europe-west1                                                    
+       settings:                                                               
+          availabilityType: REGIONAL                                           
+          backupConfiguration:                                                 
+             enabled: true                                                     
+             startTime: 23:00                                                  
+          dataDiskSizeGb: '10'                                                 
+          dataDiskType: PD_SSD                                                 
+          locationPreference:                                                  
+             zone: europe-west1-b                                              
+          maintenanceWindow:                                                   
+             day: 1                                                            
+             hour: 23                                                          
+          storageAutoResize: true                                              
+          tier: db-custom-1-3

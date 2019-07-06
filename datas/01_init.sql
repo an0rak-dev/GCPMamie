@@ -7,7 +7,7 @@ CREATE TABLE IF NOT EXISTS ssd_prod.product (
 	p_name VARCHAR(100) NOT NULL,
 	p_price DECIMAL NOT NULL,
 	p_desc VARCHAR(500) NOT NULL,
-	img VARCHAR(255),
+	p_img_link VARCHAR(255),
 	CONSTRAINT "pk_product" PRIMARY KEY (p_code)
 );
 
