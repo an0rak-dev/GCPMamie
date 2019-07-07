@@ -5,7 +5,7 @@ resources:
       consumerId: project:rich-experience-219613                              
       serviceName: sqladmin.googleapis.com                                    
                                                                               
-  - name: test-sql-instance                                                    
+  - name: test-sql-instance       # TODO Add some random/timestamp number here : https://cloud.google.com/sql/faq#reuse                                             
     type: sqladmin.v1beta4.instance                                            
     metadata:                                                                  
        dependsOn:                                                              
@@ -28,3 +28,11 @@ resources:
              hour: 23                                                          
           storageAutoResize: true                                              
           tier: db-custom-1-3
+  - name: test-sql-database                                                    
+    type: sqladmin.v1beta4.database                                            
+    metadata:                                                                  
+      dependsOn:                                                              
+        - test-sql-instance                                          
+      properties:
+         instance: test-sql-instance                                      
+         name: ssd_prod    
