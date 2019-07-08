@@ -3,8 +3,7 @@ resources:
     type: deploymentmanager.v2.virtual.enableService                           
     properties:                                                                
       consumerId: project:rich-experience-219613                              
-      serviceName: sqladmin.googleapis.com                                    
-                                                                              
+      serviceName: sqladmin.googleapis.com                                                          
   - name: test-sql-instance       # TODO Add some random/timestamp number here : https://cloud.google.com/sql/faq#reuse                                             
     type: sqladmin.v1beta4.instance                                            
     metadata:                                                                  
