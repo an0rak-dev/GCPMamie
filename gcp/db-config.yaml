@@ -1,0 +1,10 @@
+imports:
+- path: db-template.py
+
+resources:
+- name: gcpmamie-db
+  type: db-template.py
+  properties:
+  - zone: europe-west1-b
+    maxDbIndex: 100
+    dbName: ssd_prod

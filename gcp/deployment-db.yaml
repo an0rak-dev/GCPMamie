@@ -2,7 +2,7 @@ resources:
   - name: enable-apis                                                          
     type: deploymentmanager.v2.virtual.enableService                           
     properties:                                                                
-      consumerId: project:rich-experience-219613                              
+      consumerId: project:rich-experience-219613 # TODO retrieve the project id here
       serviceName: sqladmin.googleapis.com                                                          
   - name: test-sql-instance       # TODO Add some random/timestamp number here : https://cloud.google.com/sql/faq#reuse                                             
     type: sqladmin.v1beta4.instance                                            
@@ -12,7 +12,7 @@ resources:
     properties:                                                                
        backendType: SECOND_GEN                                                 
        databaseVersion: POSTGRES_11                                            
-       region: europe-west1                                                    
+       region: europe-west1       # TODO Get the region from the project's config or env ?                                             
        settings:                                                               
           availabilityType: REGIONAL                                           
           backupConfiguration:                                                 
@@ -21,7 +21,7 @@ resources:
           dataDiskSizeGb: '10'                                                 
           dataDiskType: PD_SSD                                                 
           locationPreference:                                                  
-             zone: europe-west1-b                                              
+             zone: europe-west1-b # TODO Get the zone from the project's config or env ?                                             
           maintenanceWindow:                                                   
              day: 1                                                            
              hour: 23                                                          
@@ -30,8 +30,8 @@ resources:
   - name: test-sql-database                                                    
     type: sqladmin.v1beta4.database                                            
     metadata:                                                                  
-      dependsOn:                                                              
-        - test-sql-instance                                          
+      dependsOn:                                                            
+        - test-sql-instance     # TODO Retrieve instance generated name                                     
       properties:
-         instance: test-sql-instance                                      
+         instance: test-sql-instance # TODO Retrieve instance generated name
          name: ssd_prod    
