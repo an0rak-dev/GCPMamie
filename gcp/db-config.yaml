@@ -5,6 +5,6 @@ resources:
 - name: gcpmamie-db
   type: db-template.py
   properties:
-  - zone: europe-west1-b
-    maxDbIndex: 100
-    dbName: ssd_prod
+    - zone: europe-west1-b
+      maxDbIndex: 100
+      dbName: ssd_prod
