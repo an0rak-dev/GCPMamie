@@ -10,7 +10,7 @@ def generateDependencies(deps):
 def EnableAPIs(name, project_id):
 	return {
 		'name': name,
-		'type': 'deploymentmanager.v2.virtual.enableService ',
+		'type': 'deploymentmanager.v2.virtual.enableService',
 		'properties': {
 			'consumerId': 'project:{}'.format(project_id),
 			'serviceName': 'sqladmin.googleapis.com'
