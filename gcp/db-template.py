@@ -36,7 +36,7 @@ def CreateCloudSQLInstance(basename, api_task, zone, maxSalt=None):
 					'enabled': True,
 					'startTime': '23:00'
 				},
-				'dataDiskSizeGb': '10',
+				'dataDiskSizeGb': 10,
 				'dataDiskType': 'PD_SSD',
 				'locationPreference': {
 					'zone': zone
@@ -46,7 +46,7 @@ def CreateCloudSQLInstance(basename, api_task, zone, maxSalt=None):
 					'hour': 23
 				},
 				'storageAutoResize': True,
-				'tier': 'db-custom-1-3'
+				'tier': 'db-custom-1-3840'
 			}
 		}
 	})
