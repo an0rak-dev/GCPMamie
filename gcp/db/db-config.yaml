@@ -6,5 +6,8 @@ resources:
   type: db-template.py
   properties:
     zone: europe-west1-b
-    maxDbIndex: 100
+    minDbIndex: 0
+    maxDbIndex: 1000
     dbName: ssd_prod
+    username: ssd_pg
+    password: password_en_clair_pas_bien
